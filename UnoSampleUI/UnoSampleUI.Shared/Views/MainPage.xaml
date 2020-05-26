@@ -25,12 +25,12 @@
             Or to use an IconElement instead of a Symbol see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/UWP/projectTypes/navigationpane.md
             Edit String/en-US/Resources.resw: Add a menu item title for each page-->
             
-            <NavigationViewItem x:Uid="Shell_Main" Icon="Document" 
-                                helpers:NavHelper.NavigateTo="UWPSampleMvvmlight.ViewModels.MainViewModel" />
+            <NavigationViewItem x:Uid="Shell_Main" Icon="Home" 
+                                helpers:NavHelper.NavigateTo="UnoSampleUI.Shared.ViewModels.HomeViewModel" />
             <NavigationViewItem x:Uid="Shell_ContentGrid" Icon="Document" 
-                                helpers:NavHelper.NavigateTo="UWPSampleMvvmlight.ViewModels.ContentGridViewModel" />
+                                helpers:NavHelper.NavigateTo="UnoSampleUI.Shared.ViewModels.HomeViewModel" />
             <NavigationViewItem x:Uid="Shell_TabbedPivot" Icon="Document" 
-                                helpers:NavHelper.NavigateTo="UWPSampleMvvmlight.ViewModels.TabbedPivotViewModel" />
+                                helpers:NavHelper.NavigateTo="UnoSampleUI.Shared.ViewModels.HomeViewModel" />
         </NavigationView.MenuItems>
         <i:Interaction.Behaviors>
             <behaviors:NavigationViewHeaderBehavior

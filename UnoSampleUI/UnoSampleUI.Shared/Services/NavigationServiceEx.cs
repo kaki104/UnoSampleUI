@@ -64,7 +64,7 @@ namespace UnoSampleUI.Shared.Services
             {
                 if (!_pages.TryGetValue(pageKey, out page))
                 {
-                    //throw new ArgumentException(string.Format("ExceptionNavigationServiceExPageNotFound".GetLocalized(), pageKey), nameof(pageKey));
+                    throw new ArgumentException(string.Format("ExceptionNavigationServiceExPageNotFound", pageKey), nameof(pageKey));
                 }
             }
 
