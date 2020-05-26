@@ -2,12 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using UnoSampleUI.Shared.ViewModels;
+using UnoSampleUI.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace UnoSampleUI.Shared.Behaviors
+namespace UnoSampleUI.Behaviors
 {
     public class NavigationViewHeaderBehavior : Behavior<NavigationView>
     {

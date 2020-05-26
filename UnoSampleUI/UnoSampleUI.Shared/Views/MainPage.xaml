@@ -6,9 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:i="using:Microsoft.Xaml.Interactivity" 
-    xmlns:behaviors="using:UnoSampleUI.Shared.Behaviors" 
+    xmlns:behaviors="using:UnoSampleUI.Behaviors" 
     xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:helpers="using:UnoSampleUI.Shared.Helpers"
+    xmlns:helpers="using:UnoSampleUI.Helpers"
     mc:Ignorable="d">
 
     <NavigationView
@@ -24,13 +24,12 @@
             More on Segoe UI Symbol icons: https://docs.microsoft.com/windows/uwp/style/segoe-ui-symbol-font
             Or to use an IconElement instead of a Symbol see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/UWP/projectTypes/navigationpane.md
             Edit String/en-US/Resources.resw: Add a menu item title for each page-->
-            
-            <NavigationViewItem x:Uid="Shell_Main" Icon="Home" 
-                                helpers:NavHelper.NavigateTo="UnoSampleUI.Shared.ViewModels.HomeViewModel" />
-            <NavigationViewItem x:Uid="Shell_ContentGrid" Icon="Document" 
-                                helpers:NavHelper.NavigateTo="UnoSampleUI.Shared.ViewModels.HomeViewModel" />
-            <NavigationViewItem x:Uid="Shell_TabbedPivot" Icon="Document" 
-                                helpers:NavHelper.NavigateTo="UnoSampleUI.Shared.ViewModels.HomeViewModel" />
+            <NavigationViewItem Content="Home" Icon="Home" 
+                                helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.HomeViewModel" />
+            <NavigationViewItem Content="Sample1" Icon="Calculator" 
+                                helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.HomeViewModel" />
+            <NavigationViewItem Content="Sample2" Icon="Keyboard" 
+                                helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.HomeViewModel" />
         </NavigationView.MenuItems>
         <i:Interaction.Behaviors>
             <behaviors:NavigationViewHeaderBehavior

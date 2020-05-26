@@ -4,7 +4,7 @@ using System.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace UnoSampleUI.Shared.Helpers
+namespace UnoSampleUI.Helpers
 {
     public class NavHelper
     {

@@ -3,11 +3,11 @@ using GalaSoft.MvvmLight.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using UnoSampleUI.Shared.Services;
-using UnoSampleUI.Shared.Views;
+using UnoSampleUI.Services;
+using UnoSampleUI.Views;
 using Windows.UI.Xaml.Navigation;
 
-namespace UnoSampleUI.Shared.ViewModels
+namespace UnoSampleUI.ViewModels
 {
     public class ViewModelLocator
     {

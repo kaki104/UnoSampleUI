@@ -6,7 +6,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
-namespace UnoSampleUI.Shared.Services
+namespace UnoSampleUI.Services
 {
     public class NavigationServiceEx
     {
@@ -57,6 +57,13 @@ namespace UnoSampleUI.Shared.Services
 
         public void GoForward() => Frame.GoForward();
 
+        /// <summary>
+        /// 네비게이션
+        /// </summary>
+        /// <param name="pageKey"></param>
+        /// <param name="parameter"></param>
+        /// <param name="infoOverride"></param>
+        /// <returns></returns>
         public bool Navigate(string pageKey, object parameter = null, NavigationTransitionInfo infoOverride = null)
         {
             Type page;
@@ -84,24 +91,34 @@ namespace UnoSampleUI.Shared.Services
             }
         }
 
+        /// <summary>
+        /// 뷰모델과 뷰 연결
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="pageType"></param>
         public void Configure(string key, Type pageType)
         {
             lock (_pages)
             {
                 if (_pages.ContainsKey(key))
                 {
-                    //throw new ArgumentException(string.Format("ExceptionNavigationServiceExKeyIsInNavigationService".GetLocalized(), key));
+                    throw new ArgumentException(string.Format("ExceptionNavigationServiceExKeyIsInNavigationService", key));
                 }
 
                 if (_pages.Any(p => p.Value == pageType))
                 {
-                    //throw new ArgumentException(string.Format("ExceptionNavigationServiceExTypeAlreadyConfigured".GetLocalized(), _pages.First(p => p.Value == pageType).Key));
+                    throw new ArgumentException(string.Format("ExceptionNavigationServiceExTypeAlreadyConfigured", _pages.First(p => p.Value == pageType).Key));
                 }
 
                 _pages.Add(key, pageType);
             }
         }
 
+        /// <summary>
+        /// 뷰의 등록된 이름 반환
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
         public string GetNameOfRegisteredPage(Type page)
         {
             lock (_pages)
@@ -112,8 +129,7 @@ namespace UnoSampleUI.Shared.Services
                 }
                 else
                 {
-                    //throw new ArgumentException(string.Format("ExceptionNavigationServiceExPageUnknown".GetLocalized(), page.Name));
-                    return string.Empty;
+                    throw new ArgumentException(string.Format("ExceptionNavigationServiceExPageUnknown", page.Name));
                 }
             }
         }

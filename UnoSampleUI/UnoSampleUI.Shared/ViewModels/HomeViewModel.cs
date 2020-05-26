@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace UnoSampleUI.Shared.ViewModels
+namespace UnoSampleUI.ViewModels
 {
     public class HomeViewModel : ViewModelBase
     {

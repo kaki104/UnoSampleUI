@@ -6,14 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using UnoSampleUI.Shared.Helpers;
-using UnoSampleUI.Shared.Services;
+using UnoSampleUI.Helpers;
+using UnoSampleUI.Services;
+using UnoSampleUI.Shared.Commons;
 using Windows.System;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 
-namespace UnoSampleUI.Shared.ViewModels
+namespace UnoSampleUI.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
@@ -100,6 +101,9 @@ namespace UnoSampleUI.Shared.ViewModels
             NavigationService.NavigationFailed += Frame_NavigationFailed;
             NavigationService.Navigated += Frame_Navigated;
             _navigationView.BackRequested += OnBackRequested;
+
+            //home
+            NavigationService.Navigate(PageKeys.Home);
         }
 
         private void OnBackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)

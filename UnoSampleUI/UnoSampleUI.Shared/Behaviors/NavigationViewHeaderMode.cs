@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UnoSampleUI.Shared.Behaviors
+namespace UnoSampleUI.Behaviors
 {
     public enum NavigationViewHeaderMode
     {
