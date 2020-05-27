@@ -39,8 +39,11 @@ namespace UnoSampleUI.ViewModels
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<NavigationServiceEx>();
             SimpleIoc.Default.Register<HomeViewModel>();
+            SimpleIoc.Default.Register<ContentGridViewModel>();
 
+            //뷰모델과 뷰연결
             Register<HomeViewModel, HomePage>();
+            Register<ContentGridViewModel, ContentGridPage>();
 
         }
 
@@ -53,6 +56,11 @@ namespace UnoSampleUI.ViewModels
         /// HomeViewModel
         /// </summary>
         public HomeViewModel Home => ServiceLocator.Current.GetInstance<HomeViewModel>();
+
+        /// <summary>
+        /// ContnetGrid
+        /// </summary>
+        public ContentGridViewModel ContentGrid => ServiceLocator.Current.GetInstance<ContentGridViewModel>();
 
         /// <summary>
         /// 네비게이션 서비스 - 뷰모델 연결하는게 좀 마음에 들지 않음

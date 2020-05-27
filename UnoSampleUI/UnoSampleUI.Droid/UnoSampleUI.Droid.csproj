@@ -64,6 +64,12 @@
     <PackageReference Include="MvvmLightLibs">
       <Version>5.4.1.1</Version>
     </PackageReference>
+    <PackageReference Include="Uno.Microsoft.Toolkit.Uwp">
+      <Version>6.1.0-build.71.g38c59ea2a0</Version>
+    </PackageReference>
+    <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>6.1.0-build.71.g38c59ea2a0</Version>
+    </PackageReference>
     <PackageReference Include="Uno.Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.2-uno.66</Version>
     </PackageReference>

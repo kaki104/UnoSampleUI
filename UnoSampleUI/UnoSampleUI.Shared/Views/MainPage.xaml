@@ -26,8 +26,8 @@
             Edit String/en-US/Resources.resw: Add a menu item title for each page-->
             <NavigationViewItem Content="Home" Icon="Home" 
                                 helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.HomeViewModel" />
-            <NavigationViewItem Content="Sample1" Icon="Calculator" 
-                                helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.HomeViewModel" />
+            <NavigationViewItem Content="ContentGrid" Icon="Calculator" 
+                                helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.ContentGridViewModel" />
             <NavigationViewItem Content="Sample2" Icon="Keyboard" 
                                 helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.HomeViewModel" />
         </NavigationView.MenuItems>
