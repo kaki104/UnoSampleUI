@@ -32,5 +32,11 @@ namespace UnoSampleUI.Views
         {
             get { return ViewModelLocator.Current.ContentGrid; }
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            //await ViewModel.LoadDataAsync();
+        }
     }
 }
