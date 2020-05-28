@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnoSampleUI.Services;
+using UnoSampleUI.Shared.ControlViewModels;
 using UnoSampleUI.Views;
 using Windows.UI.Xaml.Navigation;
 
@@ -14,8 +15,29 @@ namespace UnoSampleUI.ViewModels
         #region Current
 
         private static ViewModelLocator _current;
+        /// <summary>
+        /// Current
+        /// </summary>
+        public static ViewModelLocator Current
+        {
+            get
+            {
+                if(_current == null)
+                {
+                    _current = new ViewModelLocator();
+                }
+                return _current;
+            }
+        }
 
-        public static ViewModelLocator Current => _current ?? (_current = new ViewModelLocator());
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
+        public static void SetViewModelLocator(ViewModelLocator source)
+        {
+            _current = source;
+        }
 
         #endregion
         /// <summary>
@@ -40,10 +62,13 @@ namespace UnoSampleUI.ViewModels
             SimpleIoc.Default.Register<NavigationServiceEx>();
             SimpleIoc.Default.Register<HomeViewModel>();
             SimpleIoc.Default.Register<ContentGridViewModel>();
+            SimpleIoc.Default.Register<TabViewViewModel>();
+            SimpleIoc.Default.Register<AdaptiveGridViewModel>();
 
-            //뷰모델과 뷰연결
+            //뷰모델과 뷰연결 - 네비게이션을 하는 경우에만 사용
             Register<HomeViewModel, HomePage>();
             Register<ContentGridViewModel, ContentGridPage>();
+            Register<TabViewViewModel, TabViewPage>();
 
         }
 
@@ -61,6 +86,16 @@ namespace UnoSampleUI.ViewModels
         /// ContnetGrid
         /// </summary>
         public ContentGridViewModel ContentGrid => ServiceLocator.Current.GetInstance<ContentGridViewModel>();
+
+        /// <summary>
+        /// TabView
+        /// </summary>
+        public TabViewViewModel TabView => ServiceLocator.Current.GetInstance<TabViewViewModel>();
+
+        /// <summary>
+        /// AdaptiveGrid 
+        /// </summary>
+        public AdaptiveGridViewModel AdaptiveGrid => ServiceLocator.Current.GetInstance<AdaptiveGridViewModel>();
 
         /// <summary>
         /// 네비게이션 서비스 - 뷰모델 연결하는게 좀 마음에 들지 않음

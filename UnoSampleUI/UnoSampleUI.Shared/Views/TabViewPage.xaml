@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="UnoSampleUI.Views.TabViewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UnoSampleUI.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:localControls="using:UnoSampleUI.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <controls:TabView
+            CanCloseTabs="False"
+            IsCloseButtonOverlay="False"
+            CanDrag="False"
+            CanReorderItems="False"
+            AllowDrop="False">
+            
+            <!--Tabs-->
+            <controls:TabViewItem Header="전체">
+                <controls:TabViewItem.Icon>
+                    <SymbolIcon Symbol="AllApps"/>
+                </controls:TabViewItem.Icon>
+                <localControls:AdaptiveGridControl/>
+            </controls:TabViewItem>
+            <controls:TabViewItem Header="주문">
+                <controls:TabViewItem.Icon>
+                    <SymbolIcon Symbol="NewFolder"/>
+                </controls:TabViewItem.Icon>
+                <TextBlock Padding="16">주문 탭</TextBlock>
+            </controls:TabViewItem>
+            <controls:TabViewItem Header="접수">
+                <controls:TabViewItem.Icon>
+                    <SymbolIcon Symbol="Shop"/>
+                </controls:TabViewItem.Icon>
+                <TextBlock Padding="16">접수 탭</TextBlock>
+            </controls:TabViewItem>
+            <controls:TabViewItem Header="호출">
+                <controls:TabViewItem.Icon>
+                    <SymbolIcon Symbol="Phone"/>
+                </controls:TabViewItem.Icon>
+                <TextBlock Padding="16">호출 탭</TextBlock>
+            </controls:TabViewItem>
+        </controls:TabView>
+    </Grid>
+</Page>

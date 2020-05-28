@@ -13,7 +13,7 @@
 
     <NavigationView
         x:Name="navigationView"
-        IsBackButtonVisible="Visible"
+        IsBackButtonVisible="Auto"
         IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
         SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
         IsSettingsVisible="False"
@@ -28,8 +28,8 @@
                                 helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.HomeViewModel" />
             <NavigationViewItem Content="ContentGrid" Icon="Calculator" 
                                 helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.ContentGridViewModel" />
-            <NavigationViewItem Content="Sample2" Icon="Keyboard" 
-                                helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.HomeViewModel" />
+            <NavigationViewItem Content="TabView" Icon="Keyboard" 
+                                helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.TabViewViewModel" />
         </NavigationView.MenuItems>
         <i:Interaction.Behaviors>
             <behaviors:NavigationViewHeaderBehavior

@@ -21,6 +21,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\NavigationViewHeaderBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\NavigationViewHeaderMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commons\PageKeys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AdaptiveGridControl.xaml.cs">
+      <DependentUpon>AdaptiveGridControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ControlViewModels\AdaptiveGridViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\NavHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SampleCompany.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SampleOrder.cs" />
@@ -30,6 +34,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ContentGridViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\HomeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TabViewViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ContentGridPage.xaml.cs">
       <DependentUpon>ContentGridPage.xaml</DependentUpon>
     </Compile>
@@ -40,9 +45,20 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelLocator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\TabViewPage.xaml.cs">
+      <DependentUpon>TabViewPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\AdaptiveGridControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Views\ContentGridPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\TabViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

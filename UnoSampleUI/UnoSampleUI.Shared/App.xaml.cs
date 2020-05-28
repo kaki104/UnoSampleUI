@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UnoSampleUI.ViewModels;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -32,6 +33,7 @@ namespace UnoSampleUI
             ConfigureFilters(global::Uno.Extensions.LogExtensionPoint.AmbientLoggerFactory);
 
             this.InitializeComponent();
+
             this.Suspending += OnSuspending;
         }
 
@@ -42,8 +44,10 @@ namespace UnoSampleUI
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            //뷰모델로케이터 설정
+            ViewModelLocator.SetViewModelLocator(Current.Resources["Locator"] as ViewModelLocator);
 #if DEBUG
-			if (System.Diagnostics.Debugger.IsAttached)
+            if (System.Diagnostics.Debugger.IsAttached)
 			{
 				// this.DebugSettings.EnableFrameRateCounter = true;
 			}
