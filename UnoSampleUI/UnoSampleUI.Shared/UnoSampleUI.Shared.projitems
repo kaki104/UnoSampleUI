@@ -24,6 +24,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AdaptiveGridControl.xaml.cs">
       <DependentUpon>AdaptiveGridControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PageHeaderControl.xaml.cs">
+      <DependentUpon>PageHeaderControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ControlViewModels\AdaptiveGridViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\NavHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SampleCompany.cs" />
@@ -32,11 +35,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\NavigationServiceEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\SampleDataService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ContentGridViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\FeedViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\HomeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TabViewViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ContentGridPage.xaml.cs">
       <DependentUpon>ContentGridPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\FeedPage.xaml.cs">
+      <DependentUpon>FeedPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
@@ -54,7 +61,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\PageHeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Views\ContentGridPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\FeedPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

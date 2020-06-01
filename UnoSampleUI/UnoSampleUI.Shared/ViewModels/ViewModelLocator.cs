@@ -1,12 +1,10 @@
 ﻿using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using UnoSampleUI.Services;
 using UnoSampleUI.Shared.ControlViewModels;
 using UnoSampleUI.Views;
-using Windows.UI.Xaml.Navigation;
+using Windows.ApplicationModel;
 
 namespace UnoSampleUI.ViewModels
 {
@@ -22,7 +20,7 @@ namespace UnoSampleUI.ViewModels
         {
             get
             {
-                if(_current == null)
+                if (_current == null)
                 {
                     _current = new ViewModelLocator();
                 }
@@ -64,18 +62,21 @@ namespace UnoSampleUI.ViewModels
             SimpleIoc.Default.Register<ContentGridViewModel>();
             SimpleIoc.Default.Register<TabViewViewModel>();
             SimpleIoc.Default.Register<AdaptiveGridViewModel>();
+            SimpleIoc.Default.Register<FeedViewModel>();
+
 
             //뷰모델과 뷰연결 - 네비게이션을 하는 경우에만 사용
             Register<HomeViewModel, HomePage>();
             Register<ContentGridViewModel, ContentGridPage>();
             Register<TabViewViewModel, TabViewPage>();
+            Register<FeedViewModel, FeedPage>();
 
         }
 
         /// <summary>
         /// MainViewModel
         /// </summary>
-        public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
+        public MainViewModel Main => GetInstance<MainViewModel>();
 
         /// <summary>
         /// HomeViewModel
@@ -98,9 +99,31 @@ namespace UnoSampleUI.ViewModels
         public AdaptiveGridViewModel AdaptiveGrid => ServiceLocator.Current.GetInstance<AdaptiveGridViewModel>();
 
         /// <summary>
+        /// Feed
+        /// </summary>
+        public FeedViewModel Feed => ServiceLocator.Current.GetInstance<FeedViewModel>();
+
+        /// <summary>
         /// 네비게이션 서비스 - 뷰모델 연결하는게 좀 마음에 들지 않음
         /// </summary>
         public NavigationServiceEx NavigationService => SimpleIoc.Default.GetInstance<NavigationServiceEx>();
+
+        /// <summary>
+        /// GetInstance
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        private T GetInstance<T>() where T : class
+        {
+            if (DesignMode.DesignMode2Enabled)
+            {
+                return (T)Activator.CreateInstance(typeof(T));
+            }
+            else
+            {
+                return (T)ServiceLocator.Current.GetInstance(typeof(T));
+            }
+        }
 
         /// <summary>
         /// 클린업
