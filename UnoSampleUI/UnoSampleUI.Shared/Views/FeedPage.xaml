@@ -44,6 +44,13 @@
                            HorizontalAlignment="Left"
                            Margin="48,10,12,10" />
             </Grid>-->
+            <con:NavListView x:Name="ArticlesListView"
+                             Grid.Row="3" Padding="12,0"
+                             ItemsSource="{x:Bind ViewModel.Source}"
+                             AllowDrop="False">
+                
+            </con:NavListView>
+            
         </Grid>
     </Grid>
 </Page>

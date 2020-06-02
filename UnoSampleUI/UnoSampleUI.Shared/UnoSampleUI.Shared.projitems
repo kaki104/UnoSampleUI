@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AdaptiveGridControl.xaml.cs">
       <DependentUpon>AdaptiveGridControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NavListView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PageHeaderControl.xaml.cs">
       <DependentUpon>PageHeaderControl.xaml</DependentUpon>
     </Compile>
