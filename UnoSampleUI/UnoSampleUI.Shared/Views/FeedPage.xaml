@@ -46,7 +46,7 @@
             </Grid>-->
             <con:NavListView x:Name="ArticlesListView"
                              Grid.Row="3" Padding="12,0"
-                             ItemsSource="{x:Bind ViewModel.Source}"
+                             ItemsSource="{x:Bind ViewModel.Articles}"
                              AllowDrop="False">
                 
             </con:NavListView>

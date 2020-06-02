@@ -6,7 +6,7 @@ using Windows.UI.Xaml.Input;
 
 namespace UnoSampleUI.Controls
 {
-    public class NavListView : ListView, IDisposable
+    public sealed partial class NavListView : ListView
     {
         public NavListView()
         {
@@ -133,7 +133,7 @@ namespace UnoSampleUI.Controls
                     }
                     break;
 
-                case Control focusedControl:
+                case Control _:
                     if (!shiftKeyDown)
                     {
                         TryMoveFocus(FocusNavigationDirection.Down);
@@ -169,14 +169,6 @@ namespace UnoSampleUI.Controls
                     ScrollIntoView(item.Content);
                 }
             }
-        }
-
-        public void Dispose()
-        {
-            
-            ItemClick -= ItemClickHandler;
-            Loaded -= LoadedHandler;
-
         }
     }
 }

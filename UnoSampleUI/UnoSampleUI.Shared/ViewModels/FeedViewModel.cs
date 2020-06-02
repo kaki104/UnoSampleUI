@@ -3,11 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Runtime.Serialization;
+using UnoSampleUI.Services;
 using UnoSampleUI.Shared.Models;
 using Windows.UI.Xaml.Controls;
-using UnoSampleUI.Models;
-using UnoSampleUI.Services;
 
 namespace UnoSampleUI.ViewModels
 {
@@ -19,7 +17,15 @@ namespace UnoSampleUI.ViewModels
         public FeedViewModel()
         {
             Articles = new ObservableCollection<ArticleModel>();
+
+            Init();
+        }
+
+        private async void Init()
+        {
             ((INotifyCollectionChanged)Articles).CollectionChanged += FeedViewModel_CollectionChanged;
+            Link = new Uri("https://kaki104.tistory.com/rss");
+            await SyndicationService.TryGetFeedAsync(this);
         }
 
         private void FeedViewModel_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -33,8 +39,10 @@ namespace UnoSampleUI.ViewModels
 
         public override void Cleanup()
         {
-            if (Articles == null) return;
-            ((INotifyCollectionChanged)Articles).CollectionChanged -= FeedViewModel_CollectionChanged;
+            if (Articles == null)
+            {
+                return;
+            } ((INotifyCollectionChanged)Articles).CollectionChanged -= FeedViewModel_CollectionChanged;
         }
 
         /// <summary>
@@ -56,7 +64,7 @@ namespace UnoSampleUI.ViewModels
         /// <summary>
         /// Gets or sets a string representation of the URI of the feed.
         /// </summary>
-        [IgnoreDataMember]
+        //[IgnoreDataMember]
         public string LinkAsString
         {
             get => Link?.OriginalString ?? string.Empty;
@@ -92,7 +100,7 @@ namespace UnoSampleUI.ViewModels
         /// </summary>
         public string Name
         {
-            get => _name; 
+            get => _name;
             set => Set(ref _name, value);
         }
         private string _name;
@@ -100,10 +108,11 @@ namespace UnoSampleUI.ViewModels
         /// <summary>
         /// Gets a description of the feed.
         /// </summary>
-        public string Description 
-        { 
-            get => _description; 
-            set => Set(ref _description, value); }
+        public string Description
+        {
+            get => _description;
+            set => Set(ref _description, value);
+        }
         private string _description;
 
         /// <summary>
@@ -125,13 +134,7 @@ namespace UnoSampleUI.ViewModels
         /// <summary>
         /// Gets a character representation of the symbol that represents the feed in the navigation pane.
         /// </summary>
-        public char SymbolAsChar
-        {
-            get
-            {
-                return (char)Symbol;
-            }
-        }
+        public char SymbolAsChar => (char)Symbol;
 
         /// <summary>
         /// Gets the collection of articles that have been loaded for this feed. 
@@ -166,10 +169,11 @@ namespace UnoSampleUI.ViewModels
         /// <summary>
         /// Gets or sets the date and time of the last successful article retrieval. 
         /// </summary>
-        public DateTime LastSyncDateTime 
-        { 
-            get => _lastSyncDateTime; 
-            set => Set(ref _lastSyncDateTime, value); }
+        public DateTime LastSyncDateTime
+        {
+            get => _lastSyncDateTime;
+            set => Set(ref _lastSyncDateTime, value);
+        }
         private DateTime _lastSyncDateTime;
 
         /// <summary>
@@ -187,19 +191,19 @@ namespace UnoSampleUI.ViewModels
         /// <summary>
         /// Gets or sets a value that indicates whether the feed is the current selection in the navigation pane. 
         /// </summary>
-        [IgnoreDataMember]
+        //[IgnoreDataMember]
         public bool IsSelectedInNavList
         {
             get => _isSelectedInNavList;
             set => Set(ref _isSelectedInNavList, value);
         }
-        [IgnoreDataMember] 
+        //[IgnoreDataMember] 
         private bool _isSelectedInNavList;
 
         /// <summary>
         /// Gets or sets a value that indicates whether the feed is currently loading article data. 
         /// </summary>
-        [IgnoreDataMember]
+        //[IgnoreDataMember]
         public bool IsLoading
         {
             get => _isLoading;
@@ -215,7 +219,7 @@ namespace UnoSampleUI.ViewModels
                 }
             }
         }
-        [IgnoreDataMember] 
+        //[IgnoreDataMember]
         private bool _isLoading;
 
         public bool IsLoadingAndNotEmpty => IsLoading && !IsEmpty;
@@ -223,18 +227,20 @@ namespace UnoSampleUI.ViewModels
         /// <summary>
         /// Gets or sets a value that indicates whether the feed is currently being renamed. 
         /// </summary>
-        [IgnoreDataMember] public bool IsInEdit 
-        { 
-            get => _isInEdit; 
-            set => Set(ref _isInEdit, value); }
-        [IgnoreDataMember] 
+        //[IgnoreDataMember]
+        public bool IsInEdit
+        {
+            get => _isInEdit;
+            set => Set(ref _isInEdit, value);
+        }
+        //[IgnoreDataMember]
         private bool _isInEdit;
 
         /// <summary>
         /// Gets or sets a value that indicates whether the feed is currently in an error state
         /// and is no longer trying to retrieve new data. 
         /// </summary>
-        [IgnoreDataMember]
+        //[IgnoreDataMember]
         public bool IsInError
         {
             get => _isInError && !IsLoading;
@@ -248,7 +254,7 @@ namespace UnoSampleUI.ViewModels
                 }
             }
         }
-        [IgnoreDataMember] 
+        //[IgnoreDataMember]
         private bool _isInError;
 
         /// <summary>
@@ -264,13 +270,13 @@ namespace UnoSampleUI.ViewModels
         /// <summary>
         /// Gets or sets the description of the current error, if the feed is in an error state. 
         /// </summary>
-        [IgnoreDataMember] 
-        public string ErrorMessage 
-        { 
-            get => _errorMessage; 
-            set => Set(ref _errorMessage, value); 
+        //[IgnoreDataMember]
+        public string ErrorMessage
+        {
+            get => _errorMessage;
+            set => Set(ref _errorMessage, value);
         }
-        [IgnoreDataMember] 
+        //[IgnoreDataMember]
         public string _errorMessage;
 
         /// <summary>
