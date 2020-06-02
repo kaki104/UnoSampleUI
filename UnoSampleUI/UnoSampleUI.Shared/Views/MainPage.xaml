@@ -30,6 +30,8 @@
                                 helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.ContentGridViewModel" />
             <NavigationViewItem Content="TabView" Icon="Keyboard" 
                                 helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.TabViewViewModel" />
+            <NavigationViewItem Content="Feed" Icon="Contact2" 
+                                helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.FeedViewModel" />
         </NavigationView.MenuItems>
         <i:Interaction.Behaviors>
             <behaviors:NavigationViewHeaderBehavior

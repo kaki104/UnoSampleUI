@@ -6,6 +6,8 @@ using System.Collections.Specialized;
 using System.Runtime.Serialization;
 using UnoSampleUI.Shared.Models;
 using Windows.UI.Xaml.Controls;
+using UnoSampleUI.Models;
+using UnoSampleUI.Services;
 
 namespace UnoSampleUI.ViewModels
 {
