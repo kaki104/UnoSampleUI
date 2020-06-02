@@ -55,9 +55,10 @@ namespace UnoSampleUI.ViewModels
             ////    // Create run time view services and models
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
+            SimpleIoc.Default.Register<NavigationServiceEx>();
+            SimpleIoc.Default.Register<SyndicationService>();
 
             SimpleIoc.Default.Register<MainViewModel>();
-            SimpleIoc.Default.Register<NavigationServiceEx>();
             SimpleIoc.Default.Register<HomeViewModel>();
             SimpleIoc.Default.Register<ContentGridViewModel>();
             SimpleIoc.Default.Register<TabViewViewModel>();
@@ -81,32 +82,37 @@ namespace UnoSampleUI.ViewModels
         /// <summary>
         /// HomeViewModel
         /// </summary>
-        public HomeViewModel Home => ServiceLocator.Current.GetInstance<HomeViewModel>();
+        public HomeViewModel Home => GetInstance<HomeViewModel>();
 
         /// <summary>
         /// ContnetGrid
         /// </summary>
-        public ContentGridViewModel ContentGrid => ServiceLocator.Current.GetInstance<ContentGridViewModel>();
+        public ContentGridViewModel ContentGrid => GetInstance<ContentGridViewModel>();
 
         /// <summary>
         /// TabView
         /// </summary>
-        public TabViewViewModel TabView => ServiceLocator.Current.GetInstance<TabViewViewModel>();
+        public TabViewViewModel TabView => GetInstance<TabViewViewModel>();
 
         /// <summary>
         /// AdaptiveGrid 
         /// </summary>
-        public AdaptiveGridViewModel AdaptiveGrid => ServiceLocator.Current.GetInstance<AdaptiveGridViewModel>();
+        public AdaptiveGridViewModel AdaptiveGrid => GetInstance<AdaptiveGridViewModel>();
 
         /// <summary>
         /// Feed
         /// </summary>
-        public FeedViewModel Feed => ServiceLocator.Current.GetInstance<FeedViewModel>();
+        public FeedViewModel Feed => GetInstance<FeedViewModel>();
 
         /// <summary>
         /// 네비게이션 서비스 - 뷰모델 연결하는게 좀 마음에 들지 않음
         /// </summary>
         public NavigationServiceEx NavigationService => SimpleIoc.Default.GetInstance<NavigationServiceEx>();
+
+        /// <summary>
+        /// 신디케이션 서비스
+        /// </summary>
+        public SyndicationService SyndicationService => SimpleIoc.Default.GetInstance<SyndicationService>();
 
         /// <summary>
         /// GetInstance
