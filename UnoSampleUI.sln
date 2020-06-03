@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnoSampleUI.iOS", "UnoSampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnoSampleUI.UWP", "UnoSampleUI\UnoSampleUI.UWP\UnoSampleUI.UWP.csproj", "{63714F9B-E051-4B11-81DE-19F4A08408F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnoSampleUI.Wasm", "UnoSampleUI\UnoSampleUI.Wasm\UnoSampleUI.Wasm.csproj", "{BB56872E-2E05-47C2-A5C8-73E109E69C4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnoSampleUI.Wasm", "UnoSampleUI\UnoSampleUI.Wasm\UnoSampleUI.Wasm.csproj", "{BB56872E-2E05-47C2-A5C8-73E109E69C4F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnoSampleUI.macOS", "UnoSampleUI\UnoSampleUI.macOS\UnoSampleUI.macOS.csproj", "{F764D242-01B7-4239-9B4D-117288D4DAA0}"
 EndProject

@@ -98,6 +98,7 @@ namespace UnoSampleUI.Controls
         /// <param name="focusedItem"></param>
         private void OnTabKeyDown(object focusedItem)
         {
+#if NETFX_CORE
             CoreVirtualKeyStates shiftKeyState = CoreWindow.GetForCurrentThread().GetKeyState(VirtualKey.Shift);
             bool shiftKeyDown = (shiftKeyState & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
 
@@ -144,6 +145,7 @@ namespace UnoSampleUI.Controls
                     }
                     break;
             }
+#endif
         }
 
         /// <summary>

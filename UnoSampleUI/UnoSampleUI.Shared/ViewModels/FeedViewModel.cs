@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using UnoSampleUI.Services;
-using UnoSampleUI.Shared.Models;
+using UnoSampleUI.Models;
 using Windows.UI.Xaml.Controls;
 
 namespace UnoSampleUI.ViewModels

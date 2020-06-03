@@ -32,6 +32,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Commons\StaticFunctions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\NavHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ArticleModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\RSSChannel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\RSSImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\RSSItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SampleCompany.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SampleOrder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SampleOrderDetail.cs" />

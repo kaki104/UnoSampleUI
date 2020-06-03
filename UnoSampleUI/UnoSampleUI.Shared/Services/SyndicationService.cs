@@ -1,11 +1,16 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 using UnoSampleUI.Commons;
-using UnoSampleUI.Shared.Models;
+using UnoSampleUI.Models;
 using UnoSampleUI.ViewModels;
 using Windows.Web.Syndication;
 
@@ -23,38 +28,47 @@ namespace UnoSampleUI.Services
         {
             try
             {
-                var feed = await new SyndicationClient().RetrieveFeedAsync(feedViewModel.Link);
+                using(var hc = new HttpClient())
+                {
+                    var result = await hc.GetStringAsync(feedViewModel.Link);
+                    var xdoc = XDocument.Parse(result);
+                    
+                    //var feed = StaticFunctions.Deserialize<Rss>(result);
+                    
+                    //var feed = await new SyndicationClient().RetrieveFeedAsync(feedViewModel.Link);
 
-                if (cancellationToken.HasValue && cancellationToken.Value.IsCancellationRequested) return false;
+                    if (cancellationToken.HasValue && cancellationToken.Value.IsCancellationRequested) return false;
 
-                feedViewModel.LastSyncDateTime = DateTime.Now;
-                feedViewModel.Name = String.IsNullOrEmpty(feedViewModel.Name) ? feed.Title.Text : feedViewModel.Name;
-                feedViewModel.Description = feed.Subtitle?.Text ?? feed.Title.Text;
+                    feedViewModel.LastSyncDateTime = DateTime.Now;
+                    //feedViewModel.Name = String.IsNullOrEmpty(feedViewModel.Name) ? feed.Title.Text : feedViewModel.Name;
+                    //feedViewModel.Description = feed.Subtitle?.Text ?? feed.Title.Text;
 
-                feed.Items
-                    .Select(item => new ArticleModel
-                    {
-                        Title = item.Title.Text,
-                        Summary = item.Summary == null ? string.Empty :
-                            item.Summary.Text.RegexRemove("\\&.{0,4}\\;").RegexRemove("<.*?>"),
-                        Author = item.Authors.Select(a => a.NodeValue).FirstOrDefault(),
-                        Link = item.ItemUri ?? item.Links.Select(l => l.Uri).FirstOrDefault(),
-                        PublishedDate = item.PublishedDate
-                    })
-                    .ToList()
-                    .ForEach(article =>
-                    {
-                        //var favorites = AppShell.Current.ViewModel.FavoritesFeed;
-                        //var existingCopy = favorites.Articles.FirstOrDefault(a => a.Equals(article));
-                        //article = existingCopy ?? article;
-                        if (!feedViewModel.Articles.Contains(article)) feedViewModel.Articles.Add(article);
-                    });
-                feedViewModel.IsInError = false;
-                feedViewModel.ErrorMessage = null;
+                    //feed.Items
+                    //    .Select(item => new ArticleModel
+                    //    {
+                    //        Title = item.Title.Text,
+                    //        Summary = item.Summary == null ? string.Empty :
+                    //            item.Summary.Text.RegexRemove("\\&.{0,4}\\;").RegexRemove("<.*?>"),
+                    //        Author = item.Authors.Select(a => a.NodeValue).FirstOrDefault(),
+                    //        Link = item.ItemUri ?? item.Links.Select(l => l.Uri).FirstOrDefault(),
+                    //        PublishedDate = item.PublishedDate
+                    //    })
+                    //    .ToList()
+                    //    .ForEach(article =>
+                    //    {
+                    //    //var favorites = AppShell.Current.ViewModel.FavoritesFeed;
+                    //    //var existingCopy = favorites.Articles.FirstOrDefault(a => a.Equals(article));
+                    //    //article = existingCopy ?? article;
+                    //    if (!feedViewModel.Articles.Contains(article)) feedViewModel.Articles.Add(article);
+                    //    });
+                    feedViewModel.IsInError = false;
+                    feedViewModel.ErrorMessage = null;
+                }
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
                 if (!cancellationToken.HasValue || !cancellationToken.Value.IsCancellationRequested)
                 {
                     feedViewModel.IsInError = true;

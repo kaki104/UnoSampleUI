@@ -23,8 +23,12 @@ namespace UnoSampleUI.ViewModels
         /// </summary>
         public static NavigationServiceEx NavigationService => ViewModelLocator.Current.NavigationService;
 
-        private readonly KeyboardAccelerator _altLeftKeyboardAccelerator = BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu);
-        private readonly KeyboardAccelerator _backKeyboardAccelerator = BuildKeyboardAccelerator(VirtualKey.GoBack);
+#if NETFX_CORE
+        private readonly KeyboardAccelerator _altLeftKeyboardAccelerator 
+            = BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu);
+        private readonly KeyboardAccelerator _backKeyboardAccelerator 
+            = BuildKeyboardAccelerator(VirtualKey.GoBack);
+#endif
         
         /// <summary>
         /// 네비게이션 뷰
@@ -75,6 +79,7 @@ namespace UnoSampleUI.ViewModels
             Init();
         }
 
+#if NETFX_CORE
         private static KeyboardAccelerator BuildKeyboardAccelerator(VirtualKey key, VirtualKeyModifiers? modifiers = null)
         {
             var keyboardAccelerator = new KeyboardAccelerator() { Key = key };
@@ -86,12 +91,15 @@ namespace UnoSampleUI.ViewModels
             keyboardAccelerator.Invoked += OnKeyboardAcceleratorInvoked;
             return keyboardAccelerator;
         }
+#endif
 
+#if NETFX_CORE
         private static void OnKeyboardAcceleratorInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
         {
             var result = NavigationService.GoBack();
             args.Handled = result;
         }
+#endif
 
         public void Initialize(Frame frame, NavigationView navigationView, IList<KeyboardAccelerator> keyboardAccelerators)
         {
@@ -139,10 +147,12 @@ namespace UnoSampleUI.ViewModels
 
         private async void OnLoaded()
         {
+#if NETFX_CORE
             // Keyboard accelerators are added here to avoid showing 'Alt + left' tooltip on the page.
             // More info on tracking issue https://github.com/Microsoft/microsoft-ui-xaml/issues/8
             _keyboardAccelerators.Add(_altLeftKeyboardAccelerator);
             _keyboardAccelerators.Add(_backKeyboardAccelerator);
+#endif
             await Task.CompletedTask;
         }
 

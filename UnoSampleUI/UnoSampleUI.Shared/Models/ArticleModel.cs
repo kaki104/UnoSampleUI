@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using System;
 
-namespace UnoSampleUI.Shared.Models
+namespace UnoSampleUI.Models
 {
     /// <summary>
     /// Represents an article in an RSS feed and user interactions with the article. 

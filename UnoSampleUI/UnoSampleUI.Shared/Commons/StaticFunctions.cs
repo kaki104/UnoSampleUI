@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Windows.ApplicationModel.Core;
 using Windows.System;
 using Windows.UI.Xaml.Controls;
@@ -22,9 +24,9 @@ namespace UnoSampleUI.Commons
         /// </summary>
         public static void DoAfterDelay(int millisecondsDelay, Action action)
         {
-            var withoutAwait = CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                Windows.UI.Core.CoreDispatcherPriority.Normal,
-                async () => { await Task.Delay(millisecondsDelay); action(); });
+            //var withoutAwait = CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
+            //    Windows.UI.Core.CoreDispatcherPriority.Normal,
+            //    async () => { await Task.Delay(millisecondsDelay); action(); });
         }
 
         /// <summary>
@@ -72,5 +74,25 @@ namespace UnoSampleUI.Commons
             return true;
         }
 
+        public static T Deserialize<T>(string input) where T : class
+        {
+            XmlSerializer ser = new XmlSerializer(typeof(T));
+
+            using (StringReader sr = new StringReader(input))
+            {
+                return (T)ser.Deserialize(sr);
+            }
+        }
+
+        public static string Serialize<T>(T ObjectToSerialize)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(ObjectToSerialize.GetType());
+
+            using (StringWriter textWriter = new StringWriter())
+            {
+                xmlSerializer.Serialize(textWriter, ObjectToSerialize);
+                return textWriter.ToString();
+            }
+        }
     }
 }
