@@ -67,6 +67,12 @@
     <PackageReference Include="Uno.Microsoft.Toolkit.Uwp">
       <Version>6.1.0-build.71.g38c59ea2a0</Version>
     </PackageReference>
+    <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI">
+      <Version>6.1.0-build.71.g38c59ea2a0</Version>
+    </PackageReference>
+    <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Animations">
+      <Version>6.1.0-build.71.g38c59ea2a0</Version>
+    </PackageReference>
     <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Controls">
       <Version>6.1.0-build.71.g38c59ea2a0</Version>
     </PackageReference>
@@ -107,5 +113,5 @@
   <Target Name="GenerateBuild" DependsOnTargets="SignAndroidPackage" AfterTargets="Build" Condition="'$(BuildingInsideVisualStudio)'==''" />
   <ItemGroup>
     <PackageReference Include="Uno.UI.RemoteControl" Version="2.4.0" Condition="'$(Configuration)'=='Debug'" />
-</ItemGroup>
+  </ItemGroup>
 </Project>

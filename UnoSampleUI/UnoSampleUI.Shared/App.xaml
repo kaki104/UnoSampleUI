@@ -7,9 +7,11 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="_Colors.xaml"/>
                 <ResourceDictionary Source="_FontSizes.xaml"/>
                 <ResourceDictionary Source="_Thickness.xaml"/>
                 <ResourceDictionary Source="_TextBlock.xaml"/>
+                <ResourceDictionary Source="_Converters.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <viewModel:ViewModelLocator x:Key="Locator"/>
         </ResourceDictionary>
