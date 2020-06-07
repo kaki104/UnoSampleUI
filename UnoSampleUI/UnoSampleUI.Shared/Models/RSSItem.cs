@@ -8,28 +8,28 @@ namespace UnoSampleUI.Models
 {
     public class RSSItem
     {
-        public string id { get; set; }
+        public string Id { get; set; }
 
-        public string title { get; set; }
+        public string Title { get; set; }
 
-        public string link { get; set; }
+        public string Link { get; set; }
 
-        public string summary { get; set; }
+        public string Summary { get; set; }
 
-        public string content { get; set; }
+        public string Content { get; set; }
 
-        public string description { get; set; }
+        public string Description { get; set; }
 
-        public string category { get; set; }
+        public string Category { get; set; }
 
-        public DateTime pubdate { get; set; }
+        public DateTime Pubdate { get; set; }
 
-        public DateTime update { get; set; }
+        public DateTime Update { get; set; }
 
-        public string Image_url { get; set; }
+        public string ImageUrl { get; set; }
 
-        public string Image_title { get; set; }
+        public string ImageTitle { get; set; }
 
-        public string Image_link { get; set; }
+        public string ImageLink { get; set; }
     }
 }

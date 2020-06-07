@@ -5,37 +5,33 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using UnoSampleUI.Models;
 using UnoSampleUI.Services;
-using UnoSampleUI.Models;
 using Windows.UI.Xaml.Controls;
 
 namespace UnoSampleUI.ViewModels
 {
     public class FeedViewModel : ViewModelBase
     {
-        public IList<SampleOrder> Source { get; } = new ObservableCollection<SampleOrder>();
+        //public IList<SampleOrder> Source { get; } = new ObservableCollection<SampleOrder>();
 
         /// <summary>
         /// Initializes a new instance of the FeedViewModel class. 
         /// </summary>
         public FeedViewModel()
         {
-            Articles = new ObservableCollection<ArticleModel>();
-
             Init();
         }
 
         private async void Init()
         {
-            ((INotifyCollectionChanged)Articles).CollectionChanged += FeedViewModel_CollectionChanged;
-            //Link = new Uri("https://kaki104.tistory.com/rss");
-            //await SyndicationService.TryGetFeedAsync(this);
+            //((INotifyCollectionChanged)Articles).CollectionChanged += FeedViewModel_CollectionChanged;
+            Link = new Uri("https://kaki104.tistory.com/rss");
+            await RssService.TryGetFeedAsync(this);
 
-            var datas = await SampleDataService.GetContentGridDataAsync();
-            foreach (var item in datas)
-            {
-                Source.Add(item);
-            }
-
+            //IEnumerable<SampleOrder> datas = await SampleDataService.GetContentGridDataAsync();
+            //foreach (SampleOrder item in datas)
+            //{
+            //    Source.Add(item);
+            //}
         }
 
         private void FeedViewModel_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -146,10 +142,15 @@ namespace UnoSampleUI.ViewModels
         /// </summary>
         public char SymbolAsChar => (char)Symbol;
 
+        private IList<RSSItem> articles;
         /// <summary>
         /// Gets the collection of articles that have been loaded for this feed. 
         /// </summary>
-        public IList<ArticleModel> Articles { get; }
+        public IList<RSSItem> Articles
+        {
+            get => articles;
+            set => Set(ref articles, value);
+        }
 
         /// <summary>
         /// Gets the articles collection as an instance of type Object. 

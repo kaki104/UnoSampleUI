@@ -8,35 +8,35 @@ namespace UnoSampleUI.Models
 {
     public class RSSChannel
     {
-        public string title { get; set; }
+        public string Title { get; set; }
 
-        public string link { get; set; }
+        public string Link { get; set; }
 
-        public string description { get; set;}
+        public string Description { get; set;}
 
-        public DateTime pubdate { get; set; }
+        public DateTime Pubdate { get; set; }
 
-        public string language { get; set; }
+        public string Language { get; set; }
 
-        public string copyright { get; set; }
+        public string Copyright { get; set; }
 
-        public string webmaster { get; set; }
+        public string Webmaster { get; set; }
 
-        public string generator { get; set; }
+        public string Generator { get; set; }
 
-        public string docs { get; set; }
+        public string Docs { get; set; }
 
-        public int ttl { get; set; }
+        public int Ttl { get; set; }
 
-        public RSSImage image { get; set; }
+        public RSSImage Image { get; set; }
 
-        public RSSItem currentitem { get; set; }
+        public RSSItem Currentitem { get; set; }
 
-        public string author { get; set; }
+        public string Author { get; set; }
 
-        public string id { get; set; }
+        public string Id { get; set; }
 
-        public List<RSSItem> item;
+        public List<RSSItem> Items;
     }
 
 }

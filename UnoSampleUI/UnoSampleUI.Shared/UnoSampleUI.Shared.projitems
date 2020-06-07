@@ -40,7 +40,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\SampleOrderDetail.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\NavigationServiceEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\SampleDataService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\SyndicationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\RssService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ContentGridViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\FeedViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\HomeViewModel.cs" />

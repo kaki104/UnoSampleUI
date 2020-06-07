@@ -6,17 +6,12 @@ using System.Text;
 
 namespace UnoSampleUI.Models
 {
-    public class RSSImage : ObservableObject
+    public class RSSImage
     {
-        private string _url;
-        public string url 
-        {
-            get { return _url; }
-            set { Set(ref _url, value); }
-        }
+        public string Url { get; set; }
 
-        public string title { get; set; }
+        public string Title { get; set; }
 
-        public string link { get; set; }
+        public string Link { get; set; }
     }
 }

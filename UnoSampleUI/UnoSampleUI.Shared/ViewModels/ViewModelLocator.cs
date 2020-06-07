@@ -56,7 +56,7 @@ namespace UnoSampleUI.ViewModels
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
             SimpleIoc.Default.Register<NavigationServiceEx>();
-            SimpleIoc.Default.Register<SyndicationService>();
+            SimpleIoc.Default.Register<RssService>();
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<HomeViewModel>();
@@ -112,7 +112,7 @@ namespace UnoSampleUI.ViewModels
         /// <summary>
         /// 신디케이션 서비스
         /// </summary>
-        public SyndicationService SyndicationService => SimpleIoc.Default.GetInstance<SyndicationService>();
+        public RssService SyndicationService => SimpleIoc.Default.GetInstance<RssService>();
 
         /// <summary>
         /// GetInstance

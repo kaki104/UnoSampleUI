@@ -229,7 +229,7 @@
 
             <con:NavListView x:Name="ArticlesListView"
                              Grid.Row="3" Padding="12,0"
-                             ItemsSource="{x:Bind ViewModel.Source}"
+                             ItemsSource="{Binding Articles}"
                              AllowDrop="False">
                 <con:NavListView.ItemTemplate>
                     <DataTemplate>
@@ -243,14 +243,14 @@
                                     </Grid.RowDefinitions>
                                     <!--작성일-->
                                     <TextBlock Grid.Row="0"
-                                               Text="2020-06-04 12:00 AM"
+                                               Text="{Binding Pubdate}"
                                                TextWrapping="NoWrap"
                                                Foreground="{ThemeResource Foreground100SalmonBrush}"
                                                Style="{StaticResource CaptionTextBlockStyle}"/>
                                     <!--타이틀-->
                                     <TextBlock Grid.Row="1"
                                                Margin="0,10,0,0"
-                                               Text="{Binding Company}"
+                                               Text="{Binding Title}"
                                                TextWrapping="Wrap"
                                                MaxLines="2"
                                                TextTrimming="CharacterEllipsis"

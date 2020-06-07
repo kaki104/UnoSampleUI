@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 using Windows.ApplicationModel.Core;
 using Windows.System;
@@ -93,6 +94,49 @@ namespace UnoSampleUI.Commons
                 xmlSerializer.Serialize(textWriter, ObjectToSerialize);
                 return textWriter.ToString();
             }
+        }
+
+        /// <summary>
+        /// 스트링 반환
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        public static string GetString(this XElement element)
+        {
+            if (element == null
+                || element.Value == null) return string.Empty;
+            return element.Value?.Trim();
+        }
+
+        /// <summary>
+        /// 날짜시간 반환
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        public static DateTime GetDateTime(this XElement element)
+        {
+            if (element == null
+                || element.Value == null) return DateTime.MinValue;
+            if(int.TryParse(element.Value, out int idate))
+            {
+                return DateTime.Parse(idate.ToString("####-##-##")).ToLocalTime();
+            }
+            else
+            {
+                return DateTime.Parse(element.Value).ToLocalTime();
+            }
+        }
+
+        /// <summary>
+        /// 인티져 반환
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        public static int GetInt(this XElement element)
+        {
+            if (element == null
+                || element.Value == null) return -999;
+            return Convert.ToInt32(element.Value);
         }
     }
 }
