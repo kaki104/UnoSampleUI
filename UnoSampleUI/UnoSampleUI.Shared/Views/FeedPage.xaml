@@ -8,9 +8,183 @@
     xmlns:con="using:UnoSampleUI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style x:Key="ToggleFavorite"
+           TargetType="ToggleButton">
+            <Setter Property="Background"
+                Value="Transparent" />
+            <Setter Property="Foreground"
+                Value="{ThemeResource Foreground100SalmonBrush}" />
+            <Setter Property="BorderBrush"
+                Value="{ThemeResource SystemControlForegroundTransparentBrush}" />
+            <Setter Property="BorderThickness"
+                Value="{ThemeResource ToggleButtonBorderThemeThickness}" />
+            <Setter Property="Padding"
+                Value="12,12,12,10" />
+            <Setter Property="HorizontalAlignment"
+                Value="Center" />
+            <Setter Property="VerticalAlignment"
+                Value="Top" />
+            <Setter Property="FontFamily"
+                Value="Segoe MDL2 Assets" />
+            <Setter Property="FontWeight"
+                Value="Normal" />
+            <Setter Property="FontSize"
+                Value="18" />
+            <Setter Property="UseSystemFocusVisuals"
+                Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid x:Name="RootGrid"
+                          Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
+                                                                       Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="{ThemeResource Foreground100CrimsonBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
+                                                                       Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="{ThemeResource Foreground100IndianRedBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="FontSize"
+                                                                       Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="18" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="RootGrid" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
 
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
+                                                                       Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="#66000000" />
+                                            </ObjectAnimationUsingKeyFrames>
+
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Content"
+                                                                       Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="&#xE1CF;" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
+                                                                       Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="{ThemeResource Foreground100CrimsonBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="FontSize"
+                                                                       Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="18" />
+                                            </ObjectAnimationUsingKeyFrames>
+
+                                        </Storyboard>
+
+                                    </VisualState>
+                                    <VisualState x:Name="CheckedPointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Content"
+                                                                       Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="&#xE1CF;" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
+                                                                       Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="{ThemeResource Foreground100CrimsonBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="FontSize"
+                                                                       Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="18" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="CheckedPressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Content"
+                                                                       Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="&#xE1CF;" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
+                                                                       Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="{ThemeResource Foreground100IndianRedBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="FontSize"
+                                                                       Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="18" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="RootGrid" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="CheckedDisabled">
+                                        <Storyboard>
+
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
+                                                                       Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="#66000000" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Content"
+                                                                       Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="&#xE1CF;" />
+                                            </ObjectAnimationUsingKeyFrames>
+
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Indeterminate" />
+
+                                    <VisualState x:Name="IndeterminatePointerOver" />
+
+                                    <VisualState x:Name="IndeterminatePressed" />
+
+                                    <VisualState x:Name="IndeterminateDisabled" />
+
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter x:Name="ContentPresenter"
+                                          AutomationProperties.AccessibilityView="Raw"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          ContentTransitions="{TemplateBinding ContentTransitions}"
+                                          Content="{TemplateBinding Content}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Padding="{TemplateBinding Padding}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
     <Grid>
-
         <Grid x:Name="NormalFeedView">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -18,7 +192,11 @@
                 <RowDefinition Height="3" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="MasterColumn" Width="360" />
+                <ColumnDefinition x:Name="DetailColumn" Width="*" />
+            </Grid.ColumnDefinitions>
+            
             <con:PageHeaderControl>
                 <con:PageHeaderControl.HeaderContent>
                     <TextBlock Text="Future Of DotNet"
@@ -44,13 +222,70 @@
                            HorizontalAlignment="Left"
                            Margin="48,10,12,10" />
             </Grid>-->
+
+            <Rectangle Visibility="{x:Bind ViewModel.IsInErrorAndNotEmpty, Mode=OneWay, Converter={StaticResource ReverseBoolToVisibilityConverter}}"
+                       Margin="24,0.333,24,0" Grid.Row="2" Height="1" HorizontalAlignment="Stretch"
+                       Fill="{ThemeResource Border100PaleRoseBrush}" />
+
             <con:NavListView x:Name="ArticlesListView"
                              Grid.Row="3" Padding="12,0"
-                             ItemsSource="{x:Bind ViewModel.Articles}"
+                             ItemsSource="{x:Bind ViewModel.Source}"
                              AllowDrop="False">
-                
+                <con:NavListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <StackPanel>
+                                <Grid Padding="12,12,12,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <!--작성일-->
+                                    <TextBlock Grid.Row="0"
+                                               Text="2020-06-04 12:00 AM"
+                                               TextWrapping="NoWrap"
+                                               Foreground="{ThemeResource Foreground100SalmonBrush}"
+                                               Style="{StaticResource CaptionTextBlockStyle}"/>
+                                    <!--타이틀-->
+                                    <TextBlock Grid.Row="1"
+                                               Margin="0,10,0,0"
+                                               Text="{Binding Company}"
+                                               TextWrapping="Wrap"
+                                               MaxLines="2"
+                                               TextTrimming="CharacterEllipsis"
+                                               Foreground="{ThemeResource Foreground100BlackBrush}"
+                                               Style="{StaticResource SubtitleTextBlockStyle}" />
+                                    <!--내용-->
+                                    <TextBlock Grid.Row="2"
+                                               Margin="0,4,0,12"
+                                               Text="{Binding ShortDescription}"
+                                               TextWrapping="Wrap"
+                                               MaxLines="2"
+                                               TextTrimming="CharacterEllipsis"
+                                               Style="{StaticResource BodyTextBlockStyle}" />
+                                </Grid>
+                                <!--아이템 바닥에 살짝 들어가는 라인-->
+                                <Rectangle x:Name="BorderBottom"
+                                        Grid.Row="2"
+                                        Height="1"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Bottom"
+                                        Fill="{ThemeResource Border20SalmonBrush}" />
+                            </StackPanel>
+                            <!--즐겨찾기 버튼-->
+                            <ToggleButton Content="&#xE1CE;"
+                              IsThreeState="False"
+                              HorizontalAlignment="Right"
+                              Style="{StaticResource ToggleFavorite}" />
+
+                        </Grid>
+                    </DataTemplate>
+                </con:NavListView.ItemTemplate>
             </con:NavListView>
-            
+
+            <WebView x:Name="ArticleWebView" Grid.Column="1" Grid.RowSpan="4" Source="http://m.naver.com">
+            </WebView>
         </Grid>
     </Grid>
 </Page>

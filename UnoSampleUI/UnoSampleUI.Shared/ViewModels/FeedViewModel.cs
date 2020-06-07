@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using UnoSampleUI.Models;
 using UnoSampleUI.Services;
 using UnoSampleUI.Models;
 using Windows.UI.Xaml.Controls;
@@ -11,6 +12,8 @@ namespace UnoSampleUI.ViewModels
 {
     public class FeedViewModel : ViewModelBase
     {
+        public IList<SampleOrder> Source { get; } = new ObservableCollection<SampleOrder>();
+
         /// <summary>
         /// Initializes a new instance of the FeedViewModel class. 
         /// </summary>
@@ -24,8 +27,15 @@ namespace UnoSampleUI.ViewModels
         private async void Init()
         {
             ((INotifyCollectionChanged)Articles).CollectionChanged += FeedViewModel_CollectionChanged;
-            Link = new Uri("https://kaki104.tistory.com/rss");
-            await SyndicationService.TryGetFeedAsync(this);
+            //Link = new Uri("https://kaki104.tistory.com/rss");
+            //await SyndicationService.TryGetFeedAsync(this);
+
+            var datas = await SampleDataService.GetContentGridDataAsync();
+            foreach (var item in datas)
+            {
+                Source.Add(item);
+            }
+
         }
 
         private void FeedViewModel_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
