@@ -50,6 +50,4 @@
         <Setter Property="FontSize" Value="15" />
     </Style>
 
-    <Color x:Key="Foreground100Crimson">#FFC32F37</Color>
-    <SolidColorBrush x:Key="Foreground100CrimsonBrush" Color="{ThemeResource Foreground100Crimson}"/>
 </ResourceDictionary>

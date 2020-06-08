@@ -25,7 +25,17 @@ namespace UnoSampleUI.ViewModels
         {
             //((INotifyCollectionChanged)Articles).CollectionChanged += FeedViewModel_CollectionChanged;
             Link = new Uri("https://kaki104.tistory.com/rss");
-            await RssService.TryGetFeedAsync(this);
+            var feed = await RssService.GetFeedAsync(Link);
+
+            LastSyncDateTime = DateTime.Now;
+            Name = string.IsNullOrEmpty(Name) ? feed.Title : Name;
+            Description = feed.Description;
+            foreach (var item in feed.Items)
+            {
+                Articles.Add(item);
+            }
+            IsInError = false;
+            ErrorMessage = null;
 
             //IEnumerable<SampleOrder> datas = await SampleDataService.GetContentGridDataAsync();
             //foreach (SampleOrder item in datas)
@@ -70,7 +80,6 @@ namespace UnoSampleUI.ViewModels
         /// <summary>
         /// Gets or sets a string representation of the URI of the feed.
         /// </summary>
-        //[IgnoreDataMember]
         public string LinkAsString
         {
             get => Link?.OriginalString ?? string.Empty;
@@ -142,15 +151,7 @@ namespace UnoSampleUI.ViewModels
         /// </summary>
         public char SymbolAsChar => (char)Symbol;
 
-        private IList<RSSItem> articles;
-        /// <summary>
-        /// Gets the collection of articles that have been loaded for this feed. 
-        /// </summary>
-        public IList<RSSItem> Articles
-        {
-            get => articles;
-            set => Set(ref articles, value);
-        }
+        public IList<RSSItem> Articles { get; } = new ObservableCollection<RSSItem>();
 
         /// <summary>
         /// Gets the articles collection as an instance of type Object. 
@@ -202,19 +203,17 @@ namespace UnoSampleUI.ViewModels
         /// <summary>
         /// Gets or sets a value that indicates whether the feed is the current selection in the navigation pane. 
         /// </summary>
-        //[IgnoreDataMember]
         public bool IsSelectedInNavList
         {
             get => _isSelectedInNavList;
             set => Set(ref _isSelectedInNavList, value);
         }
-        //[IgnoreDataMember] 
+
         private bool _isSelectedInNavList;
 
         /// <summary>
         /// Gets or sets a value that indicates whether the feed is currently loading article data. 
         /// </summary>
-        //[IgnoreDataMember]
         public bool IsLoading
         {
             get => _isLoading;
@@ -230,7 +229,7 @@ namespace UnoSampleUI.ViewModels
                 }
             }
         }
-        //[IgnoreDataMember]
+
         private bool _isLoading;
 
         public bool IsLoadingAndNotEmpty => IsLoading && !IsEmpty;
@@ -251,7 +250,6 @@ namespace UnoSampleUI.ViewModels
         /// Gets or sets a value that indicates whether the feed is currently in an error state
         /// and is no longer trying to retrieve new data. 
         /// </summary>
-        //[IgnoreDataMember]
         public bool IsInError
         {
             get => _isInError && !IsLoading;
@@ -265,7 +263,7 @@ namespace UnoSampleUI.ViewModels
                 }
             }
         }
-        //[IgnoreDataMember]
+
         private bool _isInError;
 
         /// <summary>
@@ -281,13 +279,12 @@ namespace UnoSampleUI.ViewModels
         /// <summary>
         /// Gets or sets the description of the current error, if the feed is in an error state. 
         /// </summary>
-        //[IgnoreDataMember]
         public string ErrorMessage
         {
             get => _errorMessage;
             set => Set(ref _errorMessage, value);
         }
-        //[IgnoreDataMember]
+
         public string _errorMessage;
 
         /// <summary>

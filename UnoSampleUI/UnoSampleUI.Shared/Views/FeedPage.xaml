@@ -7,7 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:con="using:UnoSampleUI.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    d:DesignHeight="500">
     <Page.Resources>
         <Style x:Key="ToggleFavorite"
            TargetType="ToggleButton">
@@ -193,13 +194,13 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="MasterColumn" Width="360" />
+                <ColumnDefinition x:Name="MasterColumn" Width="265" />
                 <ColumnDefinition x:Name="DetailColumn" Width="*" />
             </Grid.ColumnDefinitions>
             
             <con:PageHeaderControl>
                 <con:PageHeaderControl.HeaderContent>
-                    <TextBlock Text="Future Of DotNet"
+                    <TextBlock Text="{Binding Name}"
                                HorizontalAlignment="Left"
                                TextWrapping="NoWrap"
                                TextTrimming="CharacterEllipsis"
@@ -227,11 +228,65 @@
                        Margin="24,0.333,24,0" Grid.Row="2" Height="1" HorizontalAlignment="Stretch"
                        Fill="{ThemeResource Border100PaleRoseBrush}" />
 
-            <con:NavListView x:Name="ArticlesListView"
+            <!--<con:NavListView x:Name="ArticlesListView"
                              Grid.Row="3" Padding="12,0"
-                             ItemsSource="{Binding Articles}"
+                             ItemsSource="{x:Bind ViewModel.Articles}"
                              AllowDrop="False">
                 <con:NavListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <StackPanel>
+                                <Grid Padding="12,12,12,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    --><!--작성일--><!--
+                                    <TextBlock Grid.Row="0"
+                                               Text="{Binding Pubdate}"
+                                               TextWrapping="NoWrap"
+                                               Foreground="{ThemeResource Foreground100SalmonBrush}"
+                                               Style="{StaticResource CaptionTextBlockStyle}"/>
+                                    --><!--타이틀--><!--
+                                    <TextBlock Grid.Row="1"
+                                               Margin="0,10,0,0"
+                                               Text="{Binding Title}"
+                                               TextWrapping="Wrap"
+                                               MaxLines="2"
+                                               TextTrimming="CharacterEllipsis"
+                                               Foreground="{ThemeResource Foreground100BlackBrush}"
+                                               Style="{StaticResource SubtitleTextBlockStyle}" />
+                                    --><!--내용--><!--
+                                    <TextBlock Grid.Row="2"
+                                               Margin="0,4,0,12"
+                                               Text="{Binding ShortDescription}"
+                                               TextWrapping="Wrap"
+                                               MaxLines="2"
+                                               TextTrimming="CharacterEllipsis"
+                                               Style="{StaticResource BodyTextBlockStyle}" />
+                                </Grid>
+                                --><!--아이템 바닥에 살짝 들어가는 라인--><!--
+                                <Rectangle x:Name="BorderBottom"
+                                        Grid.Row="2"
+                                        Height="1"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Bottom"
+                                        Fill="{ThemeResource Border20SalmonBrush}" />
+                            </StackPanel>
+                            --><!--즐겨찾기 버튼--><!--
+                            <ToggleButton Content="&#xE1CE;"
+                              IsThreeState="False"
+                              HorizontalAlignment="Right"
+                              Style="{StaticResource ToggleFavorite}" />
+
+                        </Grid>
+                    </DataTemplate>
+                </con:NavListView.ItemTemplate>
+            </con:NavListView>-->
+            <ListView Grid.Row="3" Padding="12,0"
+                      ItemsSource="{Binding Articles}">
+                <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <StackPanel>
@@ -265,7 +320,7 @@
                                                TextTrimming="CharacterEllipsis"
                                                Style="{StaticResource BodyTextBlockStyle}" />
                                 </Grid>
-                                <!--아이템 바닥에 살짝 들어가는 라인-->
+                                    <!--아이템 바닥에 살짝 들어가는 라인-->
                                 <Rectangle x:Name="BorderBottom"
                                         Grid.Row="2"
                                         Height="1"
@@ -278,11 +333,10 @@
                               IsThreeState="False"
                               HorizontalAlignment="Right"
                               Style="{StaticResource ToggleFavorite}" />
-
                         </Grid>
-                    </DataTemplate>
-                </con:NavListView.ItemTemplate>
-            </con:NavListView>
+                    </DataTemplate>                    
+                </ListView.ItemTemplate>
+            </ListView>
 
             <WebView x:Name="ArticleWebView" Grid.Column="1" Grid.RowSpan="4" Source="http://m.naver.com">
             </WebView>

@@ -20,13 +20,13 @@ namespace UnoSampleUI.Services
         /// <summary>
         /// Retrieves feed data from the server and updates the appropriate FeedViewModel properties.
         /// </summary>
-        public static async Task<bool> TryGetFeedAsync(FeedViewModel feedViewModel, CancellationToken? cancellationToken = null)
+        public static async Task<RSSChannel> GetFeedAsync(Uri rssLink, CancellationToken? cancellationToken = null)
         {
             try
             {
                 using (HttpClient hc = new HttpClient())
                 {
-                    string result = await hc.GetStringAsync(feedViewModel.Link);
+                    string result = await hc.GetStringAsync(rssLink);
                     XDocument xdoc = XDocument.Parse(result);
 
                     RSSChannel feed = (from channel in xdoc.Descendants("channel")
@@ -72,27 +72,27 @@ namespace UnoSampleUI.Services
 
                     if (cancellationToken.HasValue && cancellationToken.Value.IsCancellationRequested)
                     {
-                        return false;
+                        return null;
                     }
 
-                    feedViewModel.LastSyncDateTime = DateTime.Now;
-                    feedViewModel.Name = string.IsNullOrEmpty(feedViewModel.Name) ? feed.Title : feedViewModel.Name;
-                    feedViewModel.Description = feed.Description;
-                    feedViewModel.Articles = feed.Items;
-                    feedViewModel.IsInError = false;
-                    feedViewModel.ErrorMessage = null;
+                    //feedViewModel.LastSyncDateTime = DateTime.Now;
+                    //feedViewModel.Name = string.IsNullOrEmpty(feedViewModel.Name) ? feed.Title : feedViewModel.Name;
+                    //feedViewModel.Description = feed.Description;
+                    //feedViewModel.Articles = feed.Items;
+                    //feedViewModel.IsInError = false;
+                    //feedViewModel.ErrorMessage = null;
+                    return feed;
                 }
-                return true;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 if (!cancellationToken.HasValue || !cancellationToken.Value.IsCancellationRequested)
                 {
-                    feedViewModel.IsInError = true;
-                    feedViewModel.ErrorMessage = feedViewModel.Articles.Count == 0 ? BAD_URL_MESSAGE : NO_REFRESH_MESSAGE;
+                    //feedViewModel.IsInError = true;
+                    //feedViewModel.ErrorMessage = feedViewModel.Articles.Count == 0 ? BAD_URL_MESSAGE : NO_REFRESH_MESSAGE;
                 }
-                return false;
+                return null;
             }
         }
 
