@@ -1,10 +1,10 @@
 ﻿using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using UnoSampleUI.Models;
 using UnoSampleUI.Services;
+using System.Linq;
 using Windows.UI.Xaml.Controls;
 
 namespace UnoSampleUI.ViewModels
@@ -25,15 +25,22 @@ namespace UnoSampleUI.ViewModels
         {
             //((INotifyCollectionChanged)Articles).CollectionChanged += FeedViewModel_CollectionChanged;
             Link = new Uri("https://kaki104.tistory.com/rss");
-            var feed = await RssService.GetFeedAsync(Link);
-
-            LastSyncDateTime = DateTime.Now;
-            Name = string.IsNullOrEmpty(Name) ? feed.Title : Name;
-            Description = feed.Description;
-            foreach (var item in feed.Items)
+            
+            if (IsInDesignMode)
             {
-                Articles.Add(item);
+                Name = "Future Of DotNet";
+                Articles = SampleDataService.GetRss();
             }
+            else
+            {
+                RSSChannel feed;
+                feed = await RssService.GetFeedAsync(Link);
+                LastSyncDateTime = DateTime.Now;
+                Name = string.IsNullOrEmpty(Name) ? feed.Title : Name;
+                Description = feed.Description;
+                Articles = feed.Items;
+            }
+
             IsInError = false;
             ErrorMessage = null;
 
@@ -151,7 +158,17 @@ namespace UnoSampleUI.ViewModels
         /// </summary>
         public char SymbolAsChar => (char)Symbol;
 
-        public IList<RSSItem> Articles { get; } = new ObservableCollection<RSSItem>();
+        //public IList<RSSItem> Articles { get; } = new ObservableCollection<RSSItem>();
+        private IList<RSSItem> _articles;
+        /// <summary>
+        /// 아티클
+        /// </summary>
+        public IList<RSSItem> Articles
+        {
+            get => _articles;
+            set => Set(ref _articles, value);
+        }
+
 
         /// <summary>
         /// Gets the articles collection as an instance of type Object. 

@@ -42,34 +42,34 @@
     <Color x:Key="Foreground100Amber">#FFFF8C10</Color>
     <Color x:Key="Foreground100FieldGreen">#FF2DAB11</Color>
 
-    <SolidColorBrush x:Key="Background40Mud2Brush" Color="{ThemeResource Background40Mud2}"/>
-    <SolidColorBrush x:Key="Background40MudBrush" Color="{ThemeResource Background40Mud}"/>
-    <SolidColorBrush x:Key="Background100OffWhiteBrush" Color="{ThemeResource Background100OffWhite}"/>
-    <SolidColorBrush x:Key="Background60SmokeBrush" Color="{ThemeResource Background60Smoke}"/>
-    <SolidColorBrush x:Key="Background100CloudBrush" Color="{ThemeResource Background100Cloud}"/>
-    <SolidColorBrush x:Key="Background100CrimsonBrush" Color="{ThemeResource Background100Crimson}"/>
-    <SolidColorBrush x:Key="Background100IndianRedBrush" Color="{ThemeResource Background100IndianRed}"/>
-    <SolidColorBrush x:Key="Background100SalmonBrush" Color="{ThemeResource Background100Salmon}"/>
-    <SolidColorBrush x:Key="Background40BlackBrush" Color="{ThemeResource Background40Black}"/>
-    <SolidColorBrush x:Key="Background20BlackBrush" Color="{ThemeResource Background20Black}"/>
-    <SolidColorBrush x:Key="Background60WhiteBrush" Color="{ThemeResource Background60White}"/>
-    <SolidColorBrush x:Key="Border40SalmonBrush" Color="{ThemeResource Border40Salmon}"/>
-    <SolidColorBrush x:Key="Border20SalmonBrush" Color="{ThemeResource Border20Salmon}"/>
-    <SolidColorBrush x:Key="Border100PaleRoseBrush" Color="{ThemeResource Border100PaleRose}"/>
-    <SolidColorBrush x:Key="Foreground100WhiteBrush" Color="{ThemeResource Foreground100White}"/>
-    <SolidColorBrush x:Key="Foreground100BlackBrush" Color="{ThemeResource Foreground100Black}"/>
-    <SolidColorBrush x:Key="Foreground100WhisperBrush" Color="{ThemeResource Foreground100Whisper}"/>
-    <SolidColorBrush x:Key="Foreground100DimGrayBrush" Color="{ThemeResource Foreground100DimGray}"/>
-    <SolidColorBrush x:Key="Foreground100CrimsonBrush" Color="{ThemeResource Foreground100Crimson}"/>
-    <SolidColorBrush x:Key="Foreground100IndianRedBrush" Color="{ThemeResource Foreground100IndianRed}"/>
-    <SolidColorBrush x:Key="Foreground100SalmonBrush" Color="{ThemeResource Foreground100Salmon}"/>
-    <SolidColorBrush x:Key="Foreground80BlackBrush" Color="{ThemeResource Foreground80Black}"/>
-    <SolidColorBrush x:Key="Background50SalmonBrush" Color="{ThemeResource Background50Salmon}"/>
-    <SolidColorBrush x:Key="Background100WhiteBrush" Color="{ThemeResource Background100White}"/>
-    <SolidColorBrush x:Key="Background100PastelLemonBrush" Color="{ThemeResource Background100PastelLemon}"/>
-    <SolidColorBrush x:Key="Background100OceanGrayBrush" Color="{ThemeResource Background100OceanGray}"/>
-    <SolidColorBrush x:Key="Background100PastelOrangeBrush" Color="{ThemeResource Background100PastelOrange}"/>
-    <SolidColorBrush x:Key="Foreground100AmberBrush" Color="{ThemeResource Foreground100Amber}"/>
-    <SolidColorBrush x:Key="Foreground100FieldGreenBrush" Color="{ThemeResource Foreground100FieldGreen}"/>
+    <SolidColorBrush x:Key="Background40Mud2Brush" Color="{StaticResource Background40Mud2}"/>
+    <SolidColorBrush x:Key="Background40MudBrush" Color="{StaticResource Background40Mud}"/>
+    <SolidColorBrush x:Key="Background100OffWhiteBrush" Color="{StaticResource Background100OffWhite}"/>
+    <SolidColorBrush x:Key="Background60SmokeBrush" Color="{StaticResource Background60Smoke}"/>
+    <SolidColorBrush x:Key="Background100CloudBrush" Color="{StaticResource Background100Cloud}"/>
+    <SolidColorBrush x:Key="Background100CrimsonBrush" Color="{StaticResource Background100Crimson}"/>
+    <SolidColorBrush x:Key="Background100IndianRedBrush" Color="{StaticResource Background100IndianRed}"/>
+    <SolidColorBrush x:Key="Background100SalmonBrush" Color="{StaticResource Background100Salmon}"/>
+    <SolidColorBrush x:Key="Background40BlackBrush" Color="{StaticResource Background40Black}"/>
+    <SolidColorBrush x:Key="Background20BlackBrush" Color="{StaticResource Background20Black}"/>
+    <SolidColorBrush x:Key="Background60WhiteBrush" Color="{StaticResource Background60White}"/>
+    <SolidColorBrush x:Key="Border40SalmonBrush" Color="{StaticResource Border40Salmon}"/>
+    <SolidColorBrush x:Key="Border20SalmonBrush" Color="{StaticResource Border20Salmon}"/>
+    <SolidColorBrush x:Key="Border100PaleRoseBrush" Color="{StaticResource Border100PaleRose}"/>
+    <SolidColorBrush x:Key="Foreground100WhiteBrush" Color="{StaticResource Foreground100White}"/>
+    <SolidColorBrush x:Key="Foreground100BlackBrush" Color="{StaticResource Foreground100Black}"/>
+    <SolidColorBrush x:Key="Foreground100WhisperBrush" Color="{StaticResource Foreground100Whisper}"/>
+    <SolidColorBrush x:Key="Foreground100DimGrayBrush" Color="{StaticResource Foreground100DimGray}"/>
+    <SolidColorBrush x:Key="Foreground100CrimsonBrush" Color="{StaticResource Foreground100Crimson}"/>
+    <SolidColorBrush x:Key="Foreground100IndianRedBrush" Color="{StaticResource Foreground100IndianRed}"/>
+    <SolidColorBrush x:Key="Foreground100SalmonBrush" Color="{StaticResource Foreground100Salmon}"/>
+    <SolidColorBrush x:Key="Foreground80BlackBrush" Color="{StaticResource Foreground80Black}"/>
+    <SolidColorBrush x:Key="Background50SalmonBrush" Color="{StaticResource Background50Salmon}"/>
+    <SolidColorBrush x:Key="Background100WhiteBrush" Color="{StaticResource Background100White}"/>
+    <SolidColorBrush x:Key="Background100PastelLemonBrush" Color="{StaticResource Background100PastelLemon}"/>
+    <SolidColorBrush x:Key="Background100OceanGrayBrush" Color="{StaticResource Background100OceanGray}"/>
+    <SolidColorBrush x:Key="Background100PastelOrangeBrush" Color="{StaticResource Background100PastelOrange}"/>
+    <SolidColorBrush x:Key="Foreground100AmberBrush" Color="{StaticResource Foreground100Amber}"/>
+    <SolidColorBrush x:Key="Foreground100FieldGreenBrush" Color="{StaticResource Foreground100FieldGreen}"/>
 
 </ResourceDictionary>
