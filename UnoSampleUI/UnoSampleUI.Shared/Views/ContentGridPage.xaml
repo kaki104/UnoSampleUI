@@ -15,24 +15,8 @@
             Padding="{StaticResource MediumLeftMargin}"
             IsItemClickEnabled="True"
             ItemsSource="{x:Bind ViewModel.Source}"
-            SelectionMode="None">
-            <GridView.ItemTemplate>
-                <DataTemplate>
-                    <Grid x:Name="itemThumbnail" 
-                          Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
-                          Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}"
-                          Height="160">
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <FontIcon Glyph="{Binding Symbol}" />
-                            <TextBlock 
-                            Margin="{StaticResource XXSmallTopMargin}"
-                            HorizontalAlignment="Center"
-                            Style="{ThemeResource BodyTextStyle}"
-                            Text="{Binding Company}" />
-                        </StackPanel>
-                    </Grid>
-                </DataTemplate>
-            </GridView.ItemTemplate>
+            SelectionMode="None"
+            ItemTemplate="{StaticResource SampleDataTemplate}">
         </GridView>
     </Grid>
 </Page>

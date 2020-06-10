@@ -6,9 +6,23 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:viewModel="using:UnoSampleUI.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <d:DataContext>
+        <viewModel:HomeViewModel/>
+    </d:DataContext>
     <Grid>
-        <TextBlock Text="Welcome Home" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+        <controls:MasterDetailsView
+            ItemsSource="{Binding Items}"
+            ItemTemplate="{StaticResource SampleDataTemplate}"
+            CompactModeThresholdWidth="720">
+            <controls:MasterDetailsView.DetailsTemplate>
+                <DataTemplate>
+                    <WebView/>
+                </DataTemplate>
+            </controls:MasterDetailsView.DetailsTemplate>
+            
+        </controls:MasterDetailsView>
     </Grid>
 </Page>

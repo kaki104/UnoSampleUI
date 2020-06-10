@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="_Thickness.xaml"/>
                 <ResourceDictionary Source="_TextBlock.xaml"/>
                 <ResourceDictionary Source="_Converters.xaml"/>
+                <ResourceDictionary Source="_Templates.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <viewModel:ViewModelLocator x:Key="Locator"/>
         </ResourceDictionary>

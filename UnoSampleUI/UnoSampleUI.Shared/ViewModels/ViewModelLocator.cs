@@ -43,6 +43,8 @@ namespace UnoSampleUI.ViewModels
         /// </summary>
         public ViewModelLocator()
         {
+            if (DesignMode.DesignMode2Enabled) return;
+
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             ////if (ViewModelBase.IsInDesignModeStatic)

@@ -1,4 +1,5 @@
 ﻿using UnoSampleUI.ViewModels;
+using Windows.ApplicationModel;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -14,12 +15,24 @@ namespace UnoSampleUI.Views
         public HomePage()
         {
             InitializeComponent();
+
+            if(!DesignMode.DesignMode2Enabled)
+            {
+                ViewModel = ViewModelLocator.Current.Home;
+            }
         }
 
         /// <summary>
         /// ViewModel
         /// </summary>
-        public HomeViewModel ViewModel => ViewModelLocator.Current.Home;
+        public HomeViewModel ViewModel
+        {
+            get
+            {
+                return DataContext as HomeViewModel;
+            }
+            set { DataContext = value; }
+        }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
