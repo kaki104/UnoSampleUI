@@ -6,7 +6,7 @@
     <DataTemplate x:Key="SampleDataTemplate">
         <Grid x:Name="itemThumbnail" 
                           Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
-                          Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}"
+                          Background="{StaticResource SystemControlPageBackgroundChromeLowBrush}"
                           MaxHeight="160">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <FontIcon Glyph="{Binding Symbol}" />
@@ -18,4 +18,5 @@
             </StackPanel>
         </Grid>
     </DataTemplate>
+
 </ResourceDictionary>

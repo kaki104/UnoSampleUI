@@ -42,7 +42,7 @@
     <Style x:Key="DetailBodyBaseMediumStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="FontSize" Value="15" />
-        <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseMediumBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource SystemControlForegroundBaseMediumBrush}" />
     </Style>
 
     <Style x:Key="DetailBodyStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">

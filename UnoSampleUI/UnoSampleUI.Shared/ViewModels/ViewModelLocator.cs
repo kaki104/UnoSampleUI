@@ -1,5 +1,4 @@
-﻿using CommonServiceLocator;
-using GalaSoft.MvvmLight.Ioc;
+﻿using GalaSoft.MvvmLight.Ioc;
 using System;
 using UnoSampleUI.Services;
 using UnoSampleUI.Shared.ControlViewModels;
@@ -44,8 +43,6 @@ namespace UnoSampleUI.ViewModels
         public ViewModelLocator()
         {
             if (DesignMode.DesignMode2Enabled) return;
-
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             ////if (ViewModelBase.IsInDesignModeStatic)
             ////{
@@ -129,7 +126,7 @@ namespace UnoSampleUI.ViewModels
             }
             else
             {
-                return (T)ServiceLocator.Current.GetInstance(typeof(T));
+                return (T)SimpleIoc.Default.GetInstance(typeof(T));
             }
         }
 

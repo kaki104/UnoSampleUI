@@ -499,7 +499,7 @@ namespace UnoSampleUI.Services
             {
                 Pubdate = DateTime.Now,
                 Title = "Getting started Uno",
-                Description = "Setting up your development environment Prerequisites Windows 10 1809 or later Windows SDK 1809 or later Visual Studio 2019 16.3 or later Universal Windows Platform workload Mobile development with .NET (Xamarin) workload The iOS Remote Simulator Mac w..&lt;div style=&quot;text-align:left; padding-top:10px;clear:both&quot;&gt;&lt; iframe src = &quot;//www.facebook.com/plugins/like.php?href=https://kaki104.tistory.com/656&amp;amp;layout=button_count&amp;amp;show_faces=true&amp;amp;width=106&amp;amp;action=like&amp;amp;font=tahoma&amp;amp;colorscheme=light&amp;amp;height=65&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; style=&quot;border:none; overflow:hidden; width:106px; height:30px;&quot; allowTransparency=&quot;true&quot;&gt;&lt;/iframe&gt;            &lt;/ div & gt; "
+                Description = "Setting up your development environment Prerequisites Windows 10 1809"
             };
             var rssies = new List<RSSItem>();
             for (int i = 0; i < 10; i++)

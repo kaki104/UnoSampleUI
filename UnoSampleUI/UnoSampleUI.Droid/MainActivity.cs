@@ -13,6 +13,10 @@ namespace UnoSampleUI.Droid
 		)]
 	public class MainActivity : Windows.UI.Xaml.ApplicationActivity
 	{
-	}
+        public override void OnBackPressed()
+        {
+			GalaSoft.MvvmLight.Messaging.Messenger.Default.Send("OnBackPressed");
+		}
+    }
 }
 

@@ -17,7 +17,7 @@
         IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
         SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
         IsSettingsVisible="False"
-        Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+        Background="{StaticResource SystemControlBackgroundAltHighBrush}">
         <NavigationView.MenuItems>
             
             <!--TODO WTS: Change the symbols for each item as appropriate for your app
@@ -30,7 +30,7 @@
                                 helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.ContentGridViewModel" />
             <NavigationViewItem Content="TabView" Icon="Keyboard" 
                                 helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.TabViewViewModel" />
-            <NavigationViewItem Content="Feed" Icon="Contact2" 
+            <NavigationViewItem Content="Future Of DotNet" Icon="Contact2" 
                                 helpers:NavHelper.NavigateTo="UnoSampleUI.ViewModels.FeedViewModel" />
         </NavigationView.MenuItems>
         <i:Interaction.Behaviors>
@@ -41,7 +41,7 @@
                         <Grid>
                             <TextBlock
                                 Text="{Binding}"
-                                Style="{ThemeResource TitleTextBlockStyle}"
+                                Style="{StaticResource TitleTextBlockStyle}"
                                 Margin="{StaticResource SmallLeftRightMargin}" />
                         </Grid>
                     </DataTemplate>

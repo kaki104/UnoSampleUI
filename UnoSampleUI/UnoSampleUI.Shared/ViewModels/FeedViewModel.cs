@@ -6,6 +6,7 @@ using UnoSampleUI.Models;
 using UnoSampleUI.Services;
 using System.Linq;
 using Windows.UI.Xaml.Controls;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace UnoSampleUI.ViewModels
 {
@@ -44,11 +45,23 @@ namespace UnoSampleUI.ViewModels
             IsInError = false;
             ErrorMessage = null;
 
+            Messenger.Default.Register<string>(this, ReceivedString, false);
+
             //IEnumerable<SampleOrder> datas = await SampleDataService.GetContentGridDataAsync();
             //foreach (SampleOrder item in datas)
             //{
             //    Source.Add(item);
             //}
+        }
+
+        private void ReceivedString(string obj)
+        {
+            switch(obj)
+            {
+                case "OnBackPressed":
+
+                    break;
+            }
         }
 
         private void FeedViewModel_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

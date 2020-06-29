@@ -23,14 +23,13 @@
         <controls:AdaptiveGridView.ItemTemplate>
             <DataTemplate>
                 <Grid x:Name="itemThumbnail" 
-                      Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
-                      Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                      Padding="{StaticResource XSmallLeftTopRightBottomMargin}">
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                         <FontIcon Glyph="{Binding Symbol}" />
                         <TextBlock 
                             Margin="{StaticResource XXSmallTopMargin}"
                             HorizontalAlignment="Center"
-                            Style="{ThemeResource BodyTextStyle}"
+                            Style="{StaticResource BodyTextStyle}"
                             Text="{Binding Company}" />
                     </StackPanel>
                 </Grid>

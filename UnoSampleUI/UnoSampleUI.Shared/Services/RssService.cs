@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 using UnoSampleUI.Commons;
 using UnoSampleUI.Models;
@@ -48,7 +49,7 @@ namespace UnoSampleUI.Services
                 {
                     string result = await hc.GetStringAsync(rssLink);
 
-                    RSSChannel feed = GetFeedFromString(result);
+                    RSSChannel feed = GetChannelFromString(result);
 
                     if (cancellationToken.HasValue && cancellationToken.Value.IsCancellationRequested)
                     {
@@ -69,48 +70,89 @@ namespace UnoSampleUI.Services
             }
         }
 
-        public static RSSChannel GetFeedFromString(string result)
+        public static RSSChannel GetChannelFromString(string xml)
         {
-            XDocument xdoc = XDocument.Parse(result);
-            RSSChannel feed = (from channel in xdoc.Descendants("channel")
-                               let hasImage = string.IsNullOrEmpty(channel.Element("image").GetString()) == true ? false : true
-                               select new RSSChannel()
-                               {
-                                   Title = channel.Element("title").GetString(),
-                                   Link = channel.Element("link").GetString(),
-                                   Description = channel.Element("description").GetString(),
-                                   Pubdate = channel.Element("pubDate").GetDateTime(),
-                                   Language = channel.Element("language").GetString(),
-                                   Copyright = channel.Element("copyright").GetString(),
-                                   Webmaster = channel.Element("webMaster").GetString(),
-                                   Generator = channel.Element("generator").GetString(),
-                                   Docs = channel.Element("docs").GetString(),
-                                   Ttl = channel.Element("ttl").GetInt(),
-                                   Image = hasImage ? new RSSImage()
-                                   {
-                                       Url = channel.Element("image").Element("url").GetString(),
-                                       Title = channel.Element("image").Element("title").GetString(),
-                                       Link = channel.Element("image").Element("link").GetString(),
-                                   } : null,
-                                   Items = new List<RSSItem>()
-                               }).FirstOrDefault();
+            var xdoc = new XmlDocument();
+            xdoc.LoadXml(xml);
 
-            (from item in xdoc.Descendants("item")
-             let hasImage = string.IsNullOrEmpty(item.Element("image").GetString()) == true ? false : true
-             select new RSSItem()
-             {
-                 Title = item.Element("title").GetString(),
-                 Link = item.Element("link").GetString(),
-                 Description = item.Element("description").GetString(),
-                 Category = item.Element("category").GetString(),
-                 Pubdate = item.Element("pubDate").GetDateTime(),
-                 ImageLink = hasImage ? item.Element("image").Element("link").GetString() : item.Element("link").GetString(),
-                 ImageTitle = hasImage ? item.Element("image").Element("title").GetString() : item.Element("title").GetString(),
-                 ImageUrl = hasImage ? item.Element("image").Element("url").GetString() : null,
-             })
-                .ToList()
-                .ForEach(i => feed.Items.Add(i));
-            return feed;
+            var channel = xdoc.SelectSingleNode("rss/channel");
+            var returnValue = new RSSChannel
+            {
+                Title = channel.SelectSingleNode("title").GetString(),
+                Link = channel.SelectSingleNode("link").GetString(),
+                Description = channel.SelectSingleNode("description").GetString(),
+                Pubdate = channel.SelectSingleNode("pubDate").GetDateTime(),
+                Items = new List<RSSItem>()
+            };
+
+            var items = xdoc.SelectNodes("rss/channel/item");
+            foreach (XmlNode item in items)
+            {
+                returnValue.Items.Add(new RSSItem 
+                {
+                    Title = item.SelectSingleNode("title").GetString(),
+                    ItemLink = item.SelectSingleNode("link").GetString(),
+                    Description = Strip(item.SelectSingleNode("description").GetString()),
+                    Pubdate = item.SelectSingleNode("pubDate").GetDateTime()
+                });
+            }
+            return returnValue;
+        }
+
+        //public static RSSChannel GetFeedFromString(string result)
+        //{
+        //    XDocument xdoc = XDocument.Parse(result);
+        //    RSSChannel feed = (from channel in xdoc.Descendants("channel")
+        //                       let hasImage = string.IsNullOrEmpty(channel.Element("image").GetString()) == true ? false : true
+        //                       select new RSSChannel()
+        //                       {
+        //                           Title = channel.Element("title").GetString(),
+        //                           Link = channel.Element("link").GetString(),
+        //                           Description = channel.Element("description").GetString(),
+        //                           Pubdate = channel.Element("pubDate").GetDateTime(),
+        //                           Language = channel.Element("language").GetString(),
+        //                           Copyright = channel.Element("copyright").GetString(),
+        //                           Webmaster = channel.Element("webMaster").GetString(),
+        //                           Generator = channel.Element("generator").GetString(),
+        //                           Docs = channel.Element("docs").GetString(),
+        //                           Ttl = channel.Element("ttl").GetInt(),
+        //                           Image = hasImage ? new RSSImage()
+        //                           {
+        //                               Url = channel.Element("image").Element("url").GetString(),
+        //                               Title = channel.Element("image").Element("title").GetString(),
+        //                               Link = channel.Element("image").Element("link").GetString(),
+        //                           } : null,
+        //                           Items = new List<RSSItem>()
+        //                       }).FirstOrDefault();
+
+        //    (from item in xdoc.Descendants("item")
+        //     let hasImage = string.IsNullOrEmpty(item.Element("image").GetString()) == true ? false : true
+        //     select new RSSItem()
+        //     {
+        //         Title = item.Element("title").GetString(),
+        //         ItemLink = item.Element("link").GetString(),
+        //         Description = Strip(item.Element("description").GetString()),
+        //         Category = item.Element("category").GetString(),
+        //         Pubdate = item.Element("pubDate").GetDateTime(),
+        //         ImageLink = hasImage ? item.Element("image").Element("link").GetString() : item.Element("link").GetString(),
+        //         ImageTitle = hasImage ? item.Element("image").Element("title").GetString() : item.Element("title").GetString(),
+        //         ImageUrl = hasImage ? item.Element("image").Element("url").GetString() : null,
+        //     })
+        //        .ToList()
+        //        .ForEach(i => feed.Items.Add(i));
+        //    return feed;
+        //}
+
+        private static string Strip(string text)
+        {
+            var returnValue = System.Text.RegularExpressions.Regex.Replace(text, @"<(.|\n)*?>", string.Empty);
+            return returnValue;
+            //#if NETFX_CORE
+            //            return returnValue.Substring(0,50);
+            //#else
+            //            return returnValue;
+            //#endif
+
         }
     }
 }

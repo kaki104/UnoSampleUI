@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using Windows.ApplicationModel.Core;
@@ -101,11 +102,11 @@ namespace UnoSampleUI.Commons
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-        public static string GetString(this XElement element)
+        public static string GetString(this XmlNode element)
         {
             if (element == null
-                || element.Value == null) return string.Empty;
-            return element.Value?.Trim();
+                || element.InnerText == null) return string.Empty;
+            return element.InnerText?.Trim();
         }
 
         /// <summary>
@@ -113,17 +114,17 @@ namespace UnoSampleUI.Commons
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-        public static DateTime GetDateTime(this XElement element)
+        public static DateTime GetDateTime(this XmlNode element)
         {
             if (element == null
-                || element.Value == null) return DateTime.MinValue;
-            if(int.TryParse(element.Value, out int idate))
+                || element.InnerText == null) return DateTime.MinValue;
+            if(int.TryParse(element.InnerText, out int idate))
             {
                 return DateTime.Parse(idate.ToString("####-##-##")).ToLocalTime();
             }
             else
             {
-                return DateTime.Parse(element.Value).ToLocalTime();
+                return DateTime.Parse(element.InnerText).ToLocalTime();
             }
         }
 
@@ -132,11 +133,11 @@ namespace UnoSampleUI.Commons
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-        public static int GetInt(this XElement element)
+        public static int GetInt(this XmlNode element)
         {
             if (element == null
-                || element.Value == null) return -999;
-            return Convert.ToInt32(element.Value);
+                || element.InnerText == null) return -999;
+            return Convert.ToInt32(element.InnerText);
         }
     }
 }

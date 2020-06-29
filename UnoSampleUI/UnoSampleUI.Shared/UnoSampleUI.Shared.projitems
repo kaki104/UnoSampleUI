@@ -31,6 +31,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ControlViewModels\AdaptiveGridViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commons\StaticFunctions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\NavHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\UserAgentHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ArticleModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\RSSChannel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\RSSImage.cs" />
@@ -119,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\SharedAssets.md" />
+    <Content Include="$(MSBuildThisFileDirectory)TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />

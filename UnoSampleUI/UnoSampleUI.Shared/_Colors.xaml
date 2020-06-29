@@ -72,4 +72,6 @@
     <SolidColorBrush x:Key="Foreground100AmberBrush" Color="{StaticResource Foreground100Amber}"/>
     <SolidColorBrush x:Key="Foreground100FieldGreenBrush" Color="{StaticResource Foreground100FieldGreen}"/>
 
+    <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="#FFFFFFFF" />
+
 </ResourceDictionary>

@@ -64,6 +64,12 @@
     <PackageReference Include="MvvmLightLibs">
       <Version>5.4.1.1</Version>
     </PackageReference>
+    <PackageReference Include="Uno.ColorCode.UWP">
+      <Version>2.0.7-g3ba6a30145</Version>
+    </PackageReference>
+    <PackageReference Include="Uno.Microsoft.Toolkit.Parsers">
+      <Version>6.1.0-build.71.g38c59ea2a0</Version>
+    </PackageReference>
     <PackageReference Include="Uno.Microsoft.Toolkit.Uwp">
       <Version>6.1.0-build.71.g38c59ea2a0</Version>
     </PackageReference>
