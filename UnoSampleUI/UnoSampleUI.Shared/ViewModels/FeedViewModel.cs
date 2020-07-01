@@ -59,10 +59,19 @@ namespace UnoSampleUI.ViewModels
             switch(obj)
             {
                 case "OnBackPressed":
-
+                    CurrentArticle = null;
                     break;
             }
         }
+
+        private RSSItem currentArticle;
+
+        public RSSItem CurrentArticle
+        {
+            get { return currentArticle; }
+            set { Set(ref currentArticle ,value); }
+        }
+
 
         private void FeedViewModel_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {

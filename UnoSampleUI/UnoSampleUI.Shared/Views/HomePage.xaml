@@ -13,10 +13,16 @@
         <viewModel:HomeViewModel/>
     </d:DataContext>
     <Grid>
-        <controls:MasterDetailsView
-            ItemsSource="{Binding Items}"
-            ItemTemplate="{StaticResource SampleDataTemplate}"
-            CompactModeThresholdWidth="720">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Content="&lt;-" Command="{Binding BackCommand}"/>
+        <controls:MasterDetailsView Grid.Row="1"
+                                    BackButtonBehavior="Automatic"
+                                    ItemsSource="{Binding Items}"
+                                    ItemTemplate="{StaticResource SampleDataTemplate}"
+                                    SelectedItem="{Binding CurrentItem, Mode=TwoWay}">
             <controls:MasterDetailsView.DetailsTemplate>
                 <DataTemplate>
                     <WebView/>

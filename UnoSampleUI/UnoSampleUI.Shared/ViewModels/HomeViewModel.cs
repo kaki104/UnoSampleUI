@@ -16,6 +16,8 @@ namespace UnoSampleUI.ViewModels
 
         public ICommand ItemClickCommand { get; set; }
 
+        public ICommand BackCommand { get; set; }
+
         public HomeViewModel()
         {
             Init();
@@ -24,6 +26,7 @@ namespace UnoSampleUI.ViewModels
         private async void Init()
         {
             ItemClickCommand = new RelayCommand<SampleOrder>(OnItemClick);
+            BackCommand = new RelayCommand(OnBack);
 
             var datas = await SampleDataService.GetContentGridDataAsync();
             foreach (var item in datas)
@@ -32,9 +35,25 @@ namespace UnoSampleUI.ViewModels
             }
         }
 
+        private void OnBack()
+        {
+            CurrentItem = null;
+        }
+
         private void OnItemClick(SampleOrder obj)
         {
             throw new NotImplementedException();
         }
+
+        private SampleOrder currentItem;
+        /// <summary>
+        /// CurrentItem
+        /// </summary>
+        public SampleOrder CurrentItem
+        {
+            get { return currentItem; }
+            set { Set(ref currentItem ,value); }
+        }
+
     }
 }

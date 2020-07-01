@@ -27,7 +27,8 @@
         <controls:MasterDetailsView x:Name="MDView" 
                                     BackButtonBehavior="Automatic"
                                     ItemsSource="{Binding Articles}"
-                                    CompactModeThresholdWidth="720">
+                                    CompactModeThresholdWidth="720"
+                                    SelectedItem="{Binding CurrentArticle, Mode=TwoWay}">
             <!--<controls:MasterDetailsView.MasterHeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}" 
