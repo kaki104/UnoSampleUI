@@ -1,0 +1,36 @@
+﻿<UserControl
+    x:Class="ListToItemsSourceByBehavior.Views.AView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviors="using:ListToItemsSourceByBehavior.Behaviors"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:local="using:ListToItemsSourceByBehavior.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d">
+
+    <Grid>
+        <StackPanel>
+            <TextBlock FontSize="20" Text="A View" />
+            <ListView ItemTemplate="{StaticResource CodeItemTemplate}">
+                <i:Interaction.Behaviors>
+                    <behaviors:SelectorBehavior />
+                </i:Interaction.Behaviors>
+            </ListView>
+            <ComboBox
+                x:Name="CodeComboBox"
+                DisplayMemberPath="Name"
+                SelectedValuePath="CodeId">
+                <i:Interaction.Behaviors>
+                    <behaviors:SelectorBehavior />
+                </i:Interaction.Behaviors>
+            </ComboBox>
+            <TextBlock>
+                Selected ComboBox value is<LineBreak />
+                <Run Text="{Binding ElementName=CodeComboBox, Path=SelectedValue}" />
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

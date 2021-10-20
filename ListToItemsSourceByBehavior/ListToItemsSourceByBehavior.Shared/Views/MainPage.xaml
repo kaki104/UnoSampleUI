@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="ListToItemsSourceByBehavior.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ListToItemsSourceByBehavior"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="using:ListToItemsSourceByBehavior.Views"
+    mc:Ignorable="d">
+
+    <Border Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <views:AView Grid.Column="0" />
+            <views:BView Grid.Column="1" />
+        </Grid>
+    </Border>
+</Page>
